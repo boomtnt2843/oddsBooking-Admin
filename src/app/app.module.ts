@@ -8,11 +8,15 @@ import { HomeComponent } from './home/home.component'
 import { SidebarComponent } from './sidebar/sidebar.component'
 import { NavbarComponent } from './navbar/navbar.component'
 import { AllBookingComponent } from './all-booking/all-booking.component'
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+
+//Table Module
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
 
 @NgModule({
     declarations: [AppComponent, HomeComponent, SidebarComponent, NavbarComponent, AllBookingComponent],
-    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, NgbModule],
     providers: [],
     bootstrap: [AppComponent],
 })

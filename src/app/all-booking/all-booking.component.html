@@ -3,51 +3,34 @@
         <div class="card-body">
             <h3 class="card-title">รายการจองทั้งหมด</h3>
             <hr />
-            <!-- <div class="table-responsive">
+            <div class="tableee">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Room</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Start</th>
-                            <th scope="col">End</th>
-                            <th scope="col">*</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="align-middle">
-                            <th scope="row">1</th>
-                            <td>All Star</td>
-                            <td>Panupan</td>
-                            <td>2022/06/28 18.00</td>
-                            <td>2022/06/29 06.00</td>
-                            <td><button type="button" class="btn btn-primary"><span><i class="bi bi-info-circle"></i></span></button></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div> -->
-            <div class="tableee">
-                <table class="table table-striped" style="width: 100%">
-                    <thead>
-                        <tr>
+                            <th>Room</th>
                             <th>Name</th>
-                            <th>Position</th>
-                            <th>Start date</th>
-                            <th>End Date</th>
+                            <th>FromDate</th>
+                            <th>ToDate</th>
                             <th>Status</th>
+                            <th>*</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let booking of bookings">
+                        <tr *ngFor="let booking of bookings | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize">
+                            <td>{{ booking.room }}</td>
                             <td>{{ booking.fullName }}</td>
-                            <td>{{ booking.email }}</td>
-                            <td>{{ booking.startDate }}</td>
-                            <td>{{ booking.endDate }}</td>
+                            <td>{{ booking.startDate | date:'dd MMM YYYY, HH:mm' }}</td>
+                            <td>{{ booking.endDate | date:'dd MMM YYYY, HH:mm' }}</td>
                             <td>{{ booking.status }}</td>
+                            <td><button class="btn btn-primary"><i class="bi bi-info-circle"></i></button></td>
                         </tr>
                     </tbody>
                 </table>
+
+                <div class="pagination">
+                    <ngb-pagination [collectionSize]="bookings.length" #numPages [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
+                </div>
+                <div class="text-center">Page: {{ page }} / {{ numPages.pageCount }}</div>
             </div>
         </div>
     </div>
