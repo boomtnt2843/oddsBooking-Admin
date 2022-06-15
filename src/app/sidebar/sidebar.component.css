@@ -1,7 +1,5 @@
 /* bootstrap custom */
 
-
-
 /* custom */
 .sidebar li a:hover {
     text-decoration: none;
@@ -76,7 +74,6 @@
     font-size: 0.75rem;
     margin-bottom: 0;
     color: #001737;
-    
 }
 .sidebar .sidebar-name {
     font-size: 16px;

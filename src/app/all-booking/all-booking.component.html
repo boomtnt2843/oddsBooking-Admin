@@ -28,7 +28,7 @@
                 </table>
             </div> -->
             <div class="tableee">
-                <table id="myTable" #dTable class="table table-striped" style="width: 100%">
+                <table class="table table-striped" style="width: 100%">
                     <thead>
                         <tr>
                             <th>Name</th>
@@ -40,11 +40,11 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let booking of bookings">
-                            <td>{{booking.fullName}}</td>
-                            <td>{{booking.email}}</td>
-                            <td>{{booking.startDate}}</td>
-                            <td>{{booking.endDate}}</td>
-                            <td>{{booking.status}}</td>
+                            <td>{{ booking.fullName }}</td>
+                            <td>{{ booking.email }}</td>
+                            <td>{{ booking.startDate }}</td>
+                            <td>{{ booking.endDate }}</td>
+                            <td>{{ booking.status }}</td>
                         </tr>
                     </tbody>
                 </table>

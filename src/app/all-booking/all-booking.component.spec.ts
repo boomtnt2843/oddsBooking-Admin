@@ -1,25 +1,24 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
 
-import { AllBookingComponent } from './all-booking.component';
+import { AllBookingComponent } from './all-booking.component'
 
 describe('AllBookingComponent', () => {
-  let component: AllBookingComponent;
-  let fixture: ComponentFixture<AllBookingComponent>;
+    let component: AllBookingComponent
+    let fixture: ComponentFixture<AllBookingComponent>
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ AllBookingComponent ]
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            declarations: [AllBookingComponent],
+        }).compileComponents()
     })
-    .compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(AllBookingComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(AllBookingComponent)
+        component = fixture.componentInstance
+        fixture.detectChanges()
+    })
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    it('should create', () => {
+        expect(component).toBeTruthy()
+    })
+})
