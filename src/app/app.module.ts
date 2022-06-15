@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core'
+import { BrowserModule } from '@angular/platform-browser'
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module'
+import { AppComponent } from './app.component'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HomeComponent } from './home/home.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import { AllBookingComponent } from './all-booking/all-booking.component'
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent, HomeComponent, SidebarComponent, NavbarComponent, AllBookingComponent],
+    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
+    providers: [],
+    bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

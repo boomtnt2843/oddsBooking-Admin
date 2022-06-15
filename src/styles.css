@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+.main-panel {
+    transition: width 0.25s ease, margin 0.25s ease;
+    width: calc(100% - 255px);
+    min-height: calc(100vh - 64px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-left: 255px;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 991px) {
+    .main-panel {
+        margin-left: 0;
+        width: 100%;
+    }
+}
+
+.page-body-wrapper {
+    /* background-color: #e8eff9; */
+    background-color: #eaedef;
+}
+
+.page-body-wrapper {
+    min-height: calc(100vh - 64px);
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 64px;
+}
+
+.page-body-wrapper .full-page-wrapper {
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 0;
+}
+
+@media (min-width: 992px) {
+    .page-body-wrapper {
+        position: relative;
+    }
+    .page-body-wrapper .sidebar {
+        transition: none;
+    }
+    .main-panel {
+        width: calc(100% - 220px);
+        transition: none;
+    }
+}

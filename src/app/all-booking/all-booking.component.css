@@ -1,0 +1,12 @@
+/* bootstrap custom */
+.card {
+    border-radius: 0;
+    border: 1px solid #e7eaed;
+}
+
+.btn {
+    padding: 1px 6px;
+}
+
+
+/* custom */
