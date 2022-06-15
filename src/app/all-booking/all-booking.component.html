@@ -3,7 +3,28 @@
         <div class="card-body">
             <h3 class="card-title">รายการจองทั้งหมด</h3>
             <hr />
-            <div></div>
+            <div class="row myFilter">
+                <div class="col">
+                    <label for="filterRoom">ห้อง</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select disableRipple>
+                            <mat-option value="AllRoom">All</mat-option>
+                            <mat-option value="AllStar">AllStar</mat-option>
+                            <mat-option value="Neon">Neon</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+                <div class="col">
+                    <label for="filterRoom">สถานะ</label>
+                    <mat-form-field appearance="outline">
+                        <mat-select disableRipple>
+                            <mat-option value="AllRoom">All</mat-option>
+                            <mat-option value="AllStar">AllStar</mat-option>
+                            <mat-option value="Neon">Neon</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
             <div class="">
                 <nz-table class="" #rowSelectionTable [nzData]="bookings" [nzLoading]="isLoading">
                     <thead>
