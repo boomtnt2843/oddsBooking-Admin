@@ -3,34 +3,32 @@
         <div class="card-body">
             <h3 class="card-title">รายการจองทั้งหมด</h3>
             <hr />
-            <div class="tableee">
-                <table class="table table-striped">
+            <div></div>
+            <div class="">
+                <nz-table class="" #rowSelectionTable [nzData]="bookings" [nzLoading]="isLoading">
                     <thead>
                         <tr>
-                            <th>Room</th>
-                            <th>Name</th>
-                            <th>FromDate</th>
-                            <th>ToDate</th>
-                            <th>Status</th>
-                            <th>*</th>
+                            <th nzColumnKey="room">ห้อง</th>
+                            <th nzColumnKey="fullName">ชื่อ</th>
+                            <th nzColumnKey="startDate">เริ่มจอง</th>
+                            <th nzColumnKey="ToDate">จองถึง</th>
+                            <th nzColumnKey="status">สถานะ</th>
+                            <th nzColumnKey="other">เพิ่มเติม</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let booking of bookings | slice: (page - 1) * pageSize:(page - 1) * pageSize + pageSize">
-                            <td>{{ booking.room }}</td>
-                            <td>{{ booking.fullName }}</td>
-                            <td>{{ booking.startDate | date:'dd MMM YYYY, HH:mm' }}</td>
-                            <td>{{ booking.endDate | date:'dd MMM YYYY, HH:mm' }}</td>
-                            <td>{{ booking.status }}</td>
-                            <td><button class="btn btn-primary"><i class="bi bi-info-circle"></i></button></td>
+                        <tr *ngFor="let data of rowSelectionTable.data">
+                            <td>{{ data.room }}</td>
+                            <td>{{ data.fullName }}</td>
+                            <td>{{ data.startDate | date: "dd MMM YYYY, HH:mm" }}</td>
+                            <td>{{ data.endDate | date: "dd MMM YYYY, HH:mm" }}</td>
+                            <td>{{ data.status }}</td>
+                            <td>
+                                <button class="btn btn-primary"><i class="bi bi-info-circle"></i></button>
+                            </td>
                         </tr>
                     </tbody>
-                </table>
-
-                <div class="pagination">
-                    <ngb-pagination [collectionSize]="bookings.length" #numPages [(page)]="page" [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
-                </div>
-                <div class="text-center">Page: {{ page }} / {{ numPages.pageCount }}</div>
+                </nz-table>
             </div>
         </div>
     </div>

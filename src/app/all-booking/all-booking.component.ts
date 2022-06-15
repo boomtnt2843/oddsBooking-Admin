@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core'
 import { BookingDetail } from '../booking'
 import { BookingService } from '../booking.service'
-declare const $: any
 
 @Component({
     selector: 'app-all-booking',
@@ -9,20 +8,25 @@ declare const $: any
     styleUrls: ['./all-booking.component.css'],
 })
 export class AllBookingComponent implements OnInit {
-    page = 1
-    pageSize = 10
 
     constructor(private bookingService: BookingService) {}
 
     bookings: BookingDetail[] = []
+    isLoading: boolean = false
+    listOfCurrentPageData: readonly BookingDetail[] = []
 
     ngOnInit(): void {
+        this.isLoading = true
         this.bookingService.getListBooking().subscribe((data) => {
+            this.isLoading = false
             this.bookings = data
         })
     }
+
+    onCurrentPageDataChange(listOfCurrentPageData: readonly BookingDetail[]): void {
+        this.listOfCurrentPageData = listOfCurrentPageData
+        console.log(listOfCurrentPageData)
+    }
 }
 
-export class NgbdPaginationBasic {
-
-}
+export class NgbdPaginationBasic {}

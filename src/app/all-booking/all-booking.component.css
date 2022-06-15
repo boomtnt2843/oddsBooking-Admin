@@ -8,7 +8,19 @@
     padding: 1px 6px;
 }
 
+/* ng zorro */
+::ng-deep .ant-table-thead>tr>th {
+    text-align: center;
+    cursor: default;
+}
+::ng-deep .ant-table-tbody>tr>td {
+    text-align: center;
+    cursor: default;
+}
+
+
 /* custom */
 .pagination {
     justify-content: center !important;
 }
+
