@@ -1,12 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
+* {
+    font-family: 'Kanit', sans-serif !important;
+}
+
 html,
 body {
     height: 100%;
-}
-body {
     margin: 0;
-    font-family: 'Kanit', sans-serif;
 }
 
 .main-panel {
@@ -18,7 +19,7 @@ body {
     -webkit-flex-direction: column;
     flex-direction: column;
     margin-left: 255px;
-    margin-top: 1.5rem;
+    padding-top: 1.5rem;
 }
 
 @media (max-width: 991px) {
