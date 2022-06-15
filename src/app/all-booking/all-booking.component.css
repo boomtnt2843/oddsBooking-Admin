@@ -16,8 +16,15 @@
 ::ng-deep .ant-table-tbody>tr>td {
     text-align: center;
     cursor: default;
+    padding: 0.75rem;
 }
 
+::ng-deep button > i > svg {
+    margin-bottom: 6px ;
+}
+::ng-deep a > div > i > svg {
+    margin-bottom: 6px;
+}
 
 /* custom */
 .pagination {
