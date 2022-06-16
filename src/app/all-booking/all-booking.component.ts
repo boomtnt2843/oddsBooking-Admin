@@ -27,6 +27,12 @@ export class AllBookingComponent implements OnInit {
         this.listOfCurrentPageData = listOfCurrentPageData
         console.log(listOfCurrentPageData)
     }
+
+    iBooking: number = 0;
+
+    onModal(i: number){
+        this.iBooking = i;
+    }
 }
 
 export class NgbdPaginationBasic {}

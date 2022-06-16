@@ -8,6 +8,16 @@
     padding: 1px 6px;
 }
 
+.modal-content {
+    border: none;
+    font-size: 1rem;
+}
+
+.btn-close:focus {
+border: none;
+}
+
+
 /* ng zorro */
 ::ng-deep .ant-table {
     font-size: 1rem;
@@ -20,7 +30,6 @@
 ::ng-deep .ant-table-tbody>tr>td {
     text-align: center;
     cursor: default;
-    padding: 0.75rem;
 }
 
 ::ng-deep button > i > svg {
@@ -30,11 +39,22 @@
     margin-bottom: 6px;
 }
 
-/* custom */
-.pagination {
+::ng-deep .ant-pagination {
     justify-content: center !important;
 }
 
+
+/* custom */
+
 ::ng-deep .mat-form-field-infix {
     border-top: 0;
+}
+
+.control-label {
+    color: #000000;
+    font-weight: 900 !important;
+    font-style: normal;
+    padding-right: 0;
+    text-align: right;
+    margin-bottom: 0 !important;
 }

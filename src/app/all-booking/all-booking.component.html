@@ -26,26 +26,32 @@
                 </div>
             </div>
             <div class="tableBooking">
-                <nz-table class="" #rowSelectionTable [nzData]="bookings" [nzLoading]="isLoading">
+                <nz-table style="overflow-x: scroll" nzSize="middle" #rowSelectionTable [nzData]="bookings" [nzLoading]="isLoading" [nzSimple]="true" [nzPageSize]="10">
                     <thead>
                         <tr>
-                            <th style="width: 5.5rem;" nzColumnKey="room">ห้อง</th>
-                            <th style="width: 12rem;" nzColumnKey="fullName">ชื่อ</th>
-                            <th style="width: 9rem;" nzColumnKey="startDate">เริ่มจอง</th>
-                            <th style="width: 9rem;" nzColumnKey="ToDate">จองถึง</th>
-                            <th style="width: 5.5rem;" nzColumnKey="status">สถานะ</th>
-                            <th style="width: 5.5rem;" nzColumnKey="other">เพิ่มเติม</th>
+                            <!-- nzEllipsis -->
+                            <th nzColumnKey="room">ห้อง</th>
+                            <th nzColumnKey="fullName">ชื่อ</th>
+                            <th nzColumnKey="startDate">เริ่มจอง</th>
+                            <th nzColumnKey="ToDate">จองถึง</th>
+                            <th nzColumnKey="status">สถานะ</th>
+                            <th nzColumnKey="other">เพิ่มเติม</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let data of rowSelectionTable.data">
+                        <tr *ngFor="let data of rowSelectionTable.data; let i = index">
                             <td>{{ data.room }}</td>
                             <td>{{ data.fullName }}</td>
                             <td>{{ data.startDate | date: "dd MMM YYYY, HH:mm" }}</td>
                             <td>{{ data.endDate | date: "dd MMM YYYY, HH:mm" }}</td>
-                            <td>{{ data.status }}</td>
+                            <td *ngIf="data.status" style="color: green">
+                                <span class="badge rounded-pill bg-success">ยืนยันแล้ว</span>
+                            </td>
+                            <td *ngIf="!data.status" style="color: red">
+                                <span class="badge rounded-pill bg-danger">ยังไม่ยืนยัน</span>
+                            </td>
                             <td>
-                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
+                                <button (click)="onModal(i)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
                                     <i class="bi bi-info-circle"></i>
                                 </button>
                             </td>
@@ -54,12 +60,52 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">รายละเอียดการจอง</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <a type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></a>
                                         </div>
                                         <div class="modal-body">
-                                            <div>
-                                                <h6>ข้อมูลส่วนตัว</h6>
-                                                <p>ชื่อ: {{ data.fullName }}</p>
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                                    <div>
+                                                        <label class="control-label">ชื่อ :</label>
+                                                        <p>คุณ {{ rowSelectionTable.data[iBooking].fullName }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">อีเมล :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].email }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">เบอร์โทรศัพท์ :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].phoneNumber }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">สถานะ :</label>
+                                                        <p *ngIf="rowSelectionTable.data[iBooking].status" style="color: green">
+                                                            <span class="badge rounded-pill bg-success">ยืนยันแล้ว</span>
+                                                        </p>
+                                                        <p *ngIf="!rowSelectionTable.data[iBooking].status" style="color: red">
+                                                            <span class="badge rounded-pill bg-danger">ยังไม่ยืนยัน</span>
+                                                        </p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                                    <div>
+                                                        <label class="control-label">ห้องที่จอง :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].room }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">เหตุผลการจอง :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].reason }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">วันที่เริ่มจอง :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].startDate | date: "dd MMMM YYYY, HH:mm" }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="control-label">วันที่สิ้นสุด :</label>
+                                                        <p>{{ rowSelectionTable.data[iBooking].endDate | date: "dd MMMM YYYY, HH:mm" }}</p>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
