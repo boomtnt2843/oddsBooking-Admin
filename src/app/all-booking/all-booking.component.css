@@ -43,6 +43,27 @@ border: none;
     justify-content: center !important;
 }
 
+/* material custom */
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
+    padding: 0.75rem 0 0.5rem 0;
+}
+
+::ng-deep .mat-option {
+    height: 2.375rem !important;
+}
+
+::ng-deep .mat-select-arrow-wrapper {
+    height: 0;
+    padding-top: 0.5rem !important;
+}
+
+::ng-deep .cdk-overlay-pane {
+    transform: translateX(-16px) translateY(-8px) !important;
+}
+
+/* ::ng-deep .mat-form-field-flex {
+    width: 75% !important;
+} */
 
 /* custom */
 
@@ -57,4 +78,7 @@ border: none;
     padding-right: 0;
     text-align: right;
     margin-bottom: 0 !important;
+}
+.filter-booking .control-label {
+    padding-right: 0.5rem;
 }

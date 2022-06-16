@@ -3,24 +3,24 @@
         <div class="card-body">
             <h3 class="card-title">รายการจองทั้งหมด</h3>
             <hr />
-            <div class="row myFilter">
-                <div class="col">
-                    <label for="filterRoom">ห้อง</label>
+            <div class="row filter-booking">
+                <div class="col-6 col-sm-4 col-md-4">
+                    <label for="filterRoom" class="control-label">ห้อง</label>
                     <mat-form-field appearance="outline">
-                        <mat-select disableRipple>
-                            <mat-option value="AllRoom">All</mat-option>
+                        <mat-select value="AllRoom">
+                            <mat-option value="AllRoom">ทั้งหมด</mat-option>
                             <mat-option value="AllStar">AllStar</mat-option>
                             <mat-option value="Neon">Neon</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
-                <div class="col">
-                    <label for="filterRoom">สถานะ</label>
+                <div class="col-6 col-sm-4 col-md-4">
+                    <label for="filterRoom" class="control-label">สถานะ</label>
                     <mat-form-field appearance="outline">
-                        <mat-select disableRipple>
-                            <mat-option value="AllRoom">All</mat-option>
-                            <mat-option value="AllStar">AllStar</mat-option>
-                            <mat-option value="Neon">Neon</mat-option>
+                        <mat-select value="AllStatus">
+                            <mat-option value="AllStatus">ทั้งหมด</mat-option>
+                            <mat-option value="Confirmed">ยืนยันแล้ว</mat-option>
+                            <mat-option value="Unconfirmed">ยังไม่ยืนยัน</mat-option>
                         </mat-select>
                     </mat-form-field>
                 </div>
@@ -51,9 +51,9 @@
                                 <span class="badge rounded-pill bg-danger">ยังไม่ยืนยัน</span>
                             </td>
                             <td>
-                                <button (click)="onModal(i)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
+                                <a (click)="onModal(i)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#detailModal">
                                     <i class="bi bi-info-circle"></i>
-                                </button>
+                                </a>
                             </td>
                             <div class="modal fade" id="detailModal" tabindex="-1" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
@@ -87,7 +87,6 @@
                                                         </p>
                                                     </div>
                                                 </div>
-
                                                 <div class="col-sm-12 col-md-6 col-lg-6">
                                                     <div>
                                                         <label class="control-label">ห้องที่จอง :</label>
