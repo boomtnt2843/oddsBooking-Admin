@@ -61,9 +61,9 @@ border: none;
     transform: translateX(-16px) translateY(-8px) !important;
 }
 
-/* ::ng-deep .mat-form-field-flex {
+::ng-deep .mat-form-field-flex {
     width: 75% !important;
-} */
+}
 
 /* custom */
 

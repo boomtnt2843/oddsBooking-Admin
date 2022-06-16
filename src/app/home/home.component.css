@@ -1,3 +1,28 @@
-.card {
-    margin-bottom: 1.5rem;
+.coming-soon {
+    display: table;
+    width: 100%;
+    height: 85vh;
+    text-align: center;
+}
+
+.cursor-bar {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.cursor-bar h1 {
+    font-size: 70px;
+    display: inline-block;
+    padding-right: 12px;
+    animation: type 0.7s alternate infinite;
+}
+
+@keyframes type {
+    from {
+        box-shadow: inset -3px 0px 0px #888;
+    }
+
+    to {
+        box-shadow: inset -3px 0px 0px transparent;
+    }
 }
