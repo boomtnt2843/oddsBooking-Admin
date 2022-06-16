@@ -9,6 +9,10 @@
 }
 
 /* ng zorro */
+::ng-deep .ant-table {
+    font-size: 1rem;
+}
+
 ::ng-deep .ant-table-thead>tr>th {
     text-align: center;
     cursor: default;
