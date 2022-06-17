@@ -35,7 +35,7 @@ pipeline {
                     ssh -oStrictHostKeyChecking=no -t oddsbooking@159.138.240.167 \"
                             REGISTRY=${REGISTRY} \
                             BRANCH_NAME=${BRANCH_NAME} \
-                            ./deploy-script.sh
+                            ./admin/deploy-script.sh
                   \"
                 """
             }
