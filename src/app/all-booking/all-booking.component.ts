@@ -15,7 +15,7 @@ export class AllBookingComponent implements OnInit {
 
     filterForm: FormGroup = new FormGroup({})
 
-    constructor(private fb: FormBuilder,private bookingService: BookingService) {
+    constructor(private fb: FormBuilder, private bookingService: BookingService) {
         this.filterForm = fb.group({
             room: new FormControl(),
             status: new FormControl(),
@@ -42,37 +42,41 @@ export class AllBookingComponent implements OnInit {
     }
 
     onSelectRoom() {
-      console.log(this.filterForm.get('room')?.value)
-      if(this.filterForm.get('room')?.value != ''){
-        this.isLoading = true
-        this.bookingService.getRoomBooking(this.filterForm.get('room')?.value).subscribe((data) => {
-            this.isLoading = false
-            this.bookings = data
-        })
-      }else{
-        this.isLoading = true
-        this.bookingService.getListBooking().subscribe((data) => {
-            this.isLoading = false
-            this.bookings = data
-        })
-      }
+        console.log(this.filterForm.get('room')?.value)
+        if (this.filterForm.get('room')?.value != '') {
+            this.isLoading = true
+            this.bookingService
+                .getRoomBooking(this.filterForm.get('room')?.value)
+                .subscribe((data) => {
+                    this.isLoading = false
+                    this.bookings = data
+                })
+        } else {
+            this.isLoading = true
+            this.bookingService.getListBooking().subscribe((data) => {
+                this.isLoading = false
+                this.bookings = data
+            })
+        }
     }
 
     onSelectStatus() {
-      console.log(this.filterForm.get('status')?.value)
-      if(this.filterForm.get('status')?.value != ''){
-        this.isLoading = true
-        this.bookingService.getStatusBooking(this.filterForm.get('status')?.value).subscribe((data) => {
-            this.isLoading = false
-            this.bookings = data
-        })
-      }else{
-        this.isLoading = true
-        this.bookingService.getListBooking().subscribe((data) => {
-            this.isLoading = false
-            this.bookings = data
-        })
-      }
+        console.log(this.filterForm.get('status')?.value)
+        if (this.filterForm.get('status')?.value != '') {
+            this.isLoading = true
+            this.bookingService
+                .getStatusBooking(this.filterForm.get('status')?.value)
+                .subscribe((data) => {
+                    this.isLoading = false
+                    this.bookings = data
+                })
+        } else {
+            this.isLoading = true
+            this.bookingService.getListBooking().subscribe((data) => {
+                this.isLoading = false
+                this.bookings = data
+            })
+        }
     }
 }
 
