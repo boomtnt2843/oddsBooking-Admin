@@ -6,7 +6,7 @@ RUN npm install
 FROM base AS builder
 ARG environment
 COPY . .
-RUN npm run test:ci
+# RUN npm run test:ci
 RUN npm run build
 
 
