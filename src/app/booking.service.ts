@@ -10,8 +10,8 @@ import { BookingDetail } from './booking'
 export class BookingService {
     constructor(private httpClient: HttpClient) {}
 
-    private url = `${environment.apiUrl + '/v1/booking'}`
-
+    private url = `${environment.apiUrl}/v1/booking`;
+    
     httpOption = {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
     }
