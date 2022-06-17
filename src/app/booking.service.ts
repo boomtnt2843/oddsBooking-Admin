@@ -20,4 +20,20 @@ export class BookingService {
         console.log('getListBooking() running .. ')
         return this.httpClient.get<BookingDetail[]>(this.url + '/admin/', this.httpOption)
     }
+
+    getRoomBooking(room: String): Observable<BookingDetail[]> {
+        console.log('getRoomBooking() running .. ')
+        return this.httpClient.get<BookingDetail[]>(
+            this.url + '/admin/room/' + room,
+            this.httpOption
+        )
+    }
+
+    getStatusBooking(status: String): Observable<BookingDetail[]> {
+        console.log('getStatusBooking() running .. ')
+        return this.httpClient.get<BookingDetail[]>(
+            this.url + '/admin/status/' + status,
+            this.httpOption
+        )
+    }
 }

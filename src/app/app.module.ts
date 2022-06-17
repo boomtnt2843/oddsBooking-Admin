@@ -11,19 +11,33 @@ import { SidebarComponent } from './sidebar/sidebar.component'
 import { NavbarComponent } from './navbar/navbar.component'
 import { AllBookingComponent } from './all-booking/all-booking.component'
 import { HttpClientModule } from '@angular/common/http'
-import { FormsModule } from '@angular/forms'
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { FormsModule ,ReactiveFormsModule } from '@angular/forms'
 import { NzTableModule } from 'ng-zorro-antd/table'
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select'
 import { NZ_I18N } from 'ng-zorro-antd/i18n'
 import { th_TH } from 'ng-zorro-antd/i18n'
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData } from '@angular/common'
 import { LoginComponent } from './login/login.component'
 
-
 @NgModule({
-    declarations: [AppComponent, HomeComponent, SidebarComponent, NavbarComponent, AllBookingComponent, LoginComponent],
-    imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule, HttpClientModule, NgbModule, FormsModule, NzTableModule, MatSelectModule],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        SidebarComponent,
+        NavbarComponent,
+        AllBookingComponent,
+        LoginComponent,
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        HttpClientModule,
+        FormsModule,
+        NzTableModule,
+        MatSelectModule,
+        ReactiveFormsModule,
+    ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
     bootstrap: [AppComponent],
 })

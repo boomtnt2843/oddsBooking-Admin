@@ -14,26 +14,25 @@
 }
 
 .btn-close:focus {
-border: none;
+    border: none;
 }
-
 
 /* ng zorro */
 ::ng-deep .ant-table {
     font-size: 1rem;
 }
 
-::ng-deep .ant-table-thead>tr>th {
+::ng-deep .ant-table-thead > tr > th {
     text-align: center;
     cursor: default;
 }
-::ng-deep .ant-table-tbody>tr>td {
+::ng-deep .ant-table-tbody > tr > td {
     text-align: center;
     cursor: default;
 }
 
 ::ng-deep button > i > svg {
-    margin-bottom: 6px ;
+    margin-bottom: 6px;
 }
 ::ng-deep a > div > i > svg {
     margin-bottom: 6px;
