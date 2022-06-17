@@ -4,64 +4,54 @@
             <h3 class="card-title">รายการจองทั้งหมด</h3>
             <hr />
             <form [formGroup]="filterForm">
-                <div class="row filter-booking">
-                    <div class="col-1 col-sm-2">
-                        <mat-form-field class="room-filter" appearance="outline">
-                            <mat-select
-                                placeholder="ห้อง"
-                                value=""
-                                formControlName="room"
-                                (selectionChange)="onSelectRoom()"
-                            >
-                                <mat-option value="">ห้อง</mat-option>
-                                <mat-option value="All Stars">All Star</mat-option>
-                                <mat-option value="Neon">Neon</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-1 col-sm-2">
-                        <mat-form-field class="status-filter" appearance="outline">
-                            <mat-select
-                                placeholder="สถานะ"
-                                value=""
-                                formControlName="status"
-                                (selectionChange)="onSelectStatus()"
-                            >
-                                <mat-option value="">สถานะ</mat-option>
-                                <mat-option value="true">ยืนยันแล้ว</mat-option>
-                                <mat-option value="false">ยังไม่ยืนยัน</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                    <div class="col-2"></div>
-                    <div class="col-2"></div>
+                <div class="row-filter">
+                    <mat-form-field class="room-filter" appearance="outline">
+                        <mat-select
+                            placeholder="ห้อง"
+                            value=""
+                            formControlName="room"
+                            (selectionChange)="onSelectRoom()"
+                        >
+                            <mat-option value="">ห้อง</mat-option>
+                            <mat-option value="All Stars">All Star</mat-option>
+                            <mat-option value="Neon">Neon</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field class="status-filter" appearance="outline">
+                        <mat-select
+                            placeholder="สถานะ"
+                            value=""
+                            formControlName="status"
+                            (selectionChange)="onSelectStatus()"
+                        >
+                            <mat-option value="">สถานะ</mat-option>
+                            <mat-option value="true">ยืนยันแล้ว</mat-option>
+                            <mat-option value="false">ยังไม่ยืนยัน</mat-option>
+                        </mat-select>
+                    </mat-form-field>
                 </div>
             </form>
             <!-- delete this -->
-            <div class="row">
-                <div class="col-2">
-                    <nz-date-picker
-                        class="date-picker"
-                        nzPlaceHolder="วันที่เริ่มจอง"
-                        nzFormat="dd/MMM/yyyy"
-                        nzType="caret-down"
-                        [nzInputReadOnly]="true"
-                        [(ngModel)]="date"
-                        (ngModelChange)="onChange($event)"
-                    ></nz-date-picker>
-                </div>
-                <div class="col-2">
-                    <nz-date-picker
-                        class="date-picker"
-                        nzPlaceHolder="วันสิ้นสุด"
-                        nzFormat="dd/MMM/yyyy"
-                        nzType="caret-down"
-                        [nzInputReadOnly]="true"
-                        [(ngModel)]="date"
-                        (ngModelChange)="onChange($event)"
-                    ></nz-date-picker>
-                </div>
-            </div>
+            <nz-date-picker
+                class="date-picker startdate-filter"
+                placeholder="วันที่เริ่มจอง"
+                nzFormat="dd/MMM/yyyy"
+                nz-icon
+                nzType="caret-down"
+                [nzInputReadOnly]="true"
+                [(ngModel)]="date"
+                (ngModelChange)="onChange($event)"
+            ></nz-date-picker>
+            <nz-date-picker
+                class="date-picker enddate-filter"
+                nzPlaceHolder="วันสิ้นสุด"
+                nzFormat="dd/MMM/yyyy"
+                nz-icon
+                nzType="caret-down"
+                [nzInputReadOnly]="true"
+                [(ngModel)]="date"
+                (ngModelChange)="onChange($event)"
+            ></nz-date-picker>
             <!-- delete this -->
 
             <div class="tableBooking">

@@ -79,6 +79,8 @@ export class AllBookingComponent implements OnInit {
             })
         }
     }
+    
+    // can delete this, this is dummy datepicker
     onChange(result: Date): void {
         console.log('onChange: ', result)
     }

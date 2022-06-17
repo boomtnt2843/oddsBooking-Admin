@@ -51,16 +51,45 @@
     border-color: #3f51b5 !important;
 }
 
-/* ::ng-deep .ant-picker-suffix {
+::ng-deep .ant-picker-suffix {
     display: none !important;
-} */
+}
+
+::ng-deep .ng-tns-c106-5 svg {
+    margin-left: -0.75rem !important;
+}
+
+::ng-deep .ng-tns-c106-4 svg {
+    margin-left: -0.75rem !important;
+}
 
 ::ng-deep nz-date-picker svg {
-    font-size: 1rem !important;
+    font-size: 0.75rem !important;
 }
+
+::ng-deep .ant-picker-clear {
+    margin-top: 4px;
+}
+
+::ng-deep nz-date-picker:hover {
+    cursor: pointer !important;
+}
+
+::ng-deep .ant-picker-input>input {
+    cursor: pointer !important;
+}
+
+::ng-deep nz-date-picker ::placeholder {
+    color: #000000 !important;
+}
+
 /* material custom */
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-infix {
     padding: 0.625rem 0 0.375rem 0;
+}
+
+::ng-deep .mat-form-field-infix {
+    border-top: 0;
 }
 
 ::ng-deep .mat-option {
@@ -87,16 +116,21 @@
 
 /* custom */
 
-::ng-deep .mat-form-field-infix {
-    border-top: 0;
-}
-
 ::ng-deep .room-filter .mat-form-field-infix {
     width: 5rem !important;
 }
 ::ng-deep .status-filter .mat-form-field-infix {
     width: 6.25rem !important;
 }
+
+::ng-deep .startdate-filter {
+    width: 8.5rem !important;
+}
+
+::ng-deep .enddate-filter {
+    width: 8.5rem !important;
+}
+
 
 .control-label {
     color: #000000;
@@ -107,8 +141,14 @@
     margin-bottom: 0 !important;
 }
 
-.filter-booking .col-1 {
+/* .filter-booking .col-1 {
 margin-right: 0.75rem !important;
+} */
+.row-filter {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
 }
 
 .date-picker {
@@ -144,3 +184,4 @@ margin-right: 0.75rem !important;
     border-width: 1px !important;
     padding: 4px 11px;
 }
+
