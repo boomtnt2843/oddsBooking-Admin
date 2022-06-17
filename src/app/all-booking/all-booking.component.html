@@ -5,36 +5,64 @@
             <hr />
             <form [formGroup]="filterForm">
                 <div class="row filter-booking">
-                    <div class="col-6 col-sm-4 col-md-3">
-                        <label for="filterRoom" class="control-label">ห้อง</label>
-                        <mat-form-field appearance="outline">
+                    <div class="col-1 col-sm-2">
+                        <mat-form-field class="room-filter" appearance="outline">
                             <mat-select
+                                placeholder="ห้อง"
                                 value=""
                                 formControlName="room"
                                 (selectionChange)="onSelectRoom()"
                             >
-                                <mat-option value="">ทั้งหมด</mat-option>
+                                <mat-option value="">ห้อง</mat-option>
                                 <mat-option value="All Stars">All Star</mat-option>
                                 <mat-option value="Neon">Neon</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div class="col-6 col-sm-4 col-md-3">
-                        <label for="filterStatus" class="control-label">สถานะ</label>
-                        <mat-form-field appearance="outline">
+                    <div class="col-1 col-sm-2">
+                        <mat-form-field class="status-filter" appearance="outline">
                             <mat-select
+                                placeholder="สถานะ"
                                 value=""
                                 formControlName="status"
                                 (selectionChange)="onSelectStatus()"
                             >
-                                <mat-option value="">ทั้งหมด</mat-option>
+                                <mat-option value="">สถานะ</mat-option>
                                 <mat-option value="true">ยืนยันแล้ว</mat-option>
                                 <mat-option value="false">ยังไม่ยืนยัน</mat-option>
                             </mat-select>
                         </mat-form-field>
                     </div>
+                    <div class="col-2"></div>
+                    <div class="col-2"></div>
                 </div>
             </form>
+            <!-- delete this -->
+            <div class="row">
+                <div class="col-2">
+                    <nz-date-picker
+                        class="date-picker"
+                        nzPlaceHolder="วันที่เริ่มจอง"
+                        nzFormat="dd/MMM/yyyy"
+                        nzType="caret-down"
+                        [nzInputReadOnly]="true"
+                        [(ngModel)]="date"
+                        (ngModelChange)="onChange($event)"
+                    ></nz-date-picker>
+                </div>
+                <div class="col-2">
+                    <nz-date-picker
+                        class="date-picker"
+                        nzPlaceHolder="วันสิ้นสุด"
+                        nzFormat="dd/MMM/yyyy"
+                        nzType="caret-down"
+                        [nzInputReadOnly]="true"
+                        [(ngModel)]="date"
+                        (ngModelChange)="onChange($event)"
+                    ></nz-date-picker>
+                </div>
+            </div>
+            <!-- delete this -->
 
             <div class="tableBooking">
                 <nz-table

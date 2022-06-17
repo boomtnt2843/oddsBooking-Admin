@@ -11,6 +11,7 @@ import { BookingService } from '../booking.service'
 export class AllBookingComponent implements OnInit {
     bookings: BookingDetail[] = []
     isLoading: boolean = false
+    date = null
     listOfCurrentPageData: readonly BookingDetail[] = []
 
     filterForm: FormGroup = new FormGroup({})
@@ -77,6 +78,9 @@ export class AllBookingComponent implements OnInit {
                 this.bookings = data
             })
         }
+    }
+    onChange(result: Date): void {
+        console.log('onChange: ', result)
     }
 }
 
