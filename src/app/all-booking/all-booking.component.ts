@@ -11,6 +11,7 @@ import { BookingService } from '../booking.service'
 export class AllBookingComponent implements OnInit {
     bookings: BookingDetail[] = []
     isLoading: boolean = false
+    // date = null
     listOfCurrentPageData: readonly BookingDetail[] = []
 
     filterForm: FormGroup = new FormGroup({})
@@ -90,7 +91,8 @@ export class AllBookingComponent implements OnInit {
         }
         this.bookings = bookingFilterByDate
         this.isLoading = false
+      }
+
     }
-}
 
 export class NgbdPaginationBasic {}

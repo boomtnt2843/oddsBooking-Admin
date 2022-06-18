@@ -18,6 +18,9 @@ import { NZ_I18N } from 'ng-zorro-antd/i18n'
 import { th_TH } from 'ng-zorro-antd/i18n'
 import { registerLocaleData } from '@angular/common'
 import { LoginComponent } from './login/login.component'
+import { NzInputModule } from 'ng-zorro-antd/input';
+import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
     declarations: [
@@ -37,6 +40,9 @@ import { LoginComponent } from './login/login.component'
         NzTableModule,
         MatSelectModule,
         ReactiveFormsModule,
+        NzInputModule,
+        NzDatePickerModule,
+        NzIconModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
     bootstrap: [AppComponent],
