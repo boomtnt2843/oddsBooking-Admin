@@ -30,24 +30,38 @@
                         </mat-select>
                     </mat-form-field>
                     <nz-date-picker
-                class="date-picker startdate-filter"
-                placeholder="วันที่เริ่มจอง"
-                nzFormat="dd/MMM/yyyy"
-                nz-icon
-                nzType="caret-down"
-                [nzInputReadOnly]="true"
-            ></nz-date-picker>
-            <nz-date-picker
-                class="date-picker enddate-filter"
-                nzPlaceHolder="วันสิ้นสุด"
-                nzFormat="dd/MMM/yyyy"
-                nz-icon
-                nzType="caret-down"
-                [nzInputReadOnly]="true"
-            ></nz-date-picker>
+                        class="date-picker startdate-filter"
+                        placeholder="วันที่เริ่มจอง"
+                        nzFormat="dd/MMM/yyyy"
+                        nz-icon
+                        nzType="caret-down"
+                        [nzInputReadOnly]="true"
+                    >
+                    </nz-date-picker>
+                    <nz-date-picker
+                        class="date-picker enddate-filter"
+                        nzPlaceHolder="วันสิ้นสุด"
+                        nzFormat="dd/MMM/yyyy"
+                        nz-icon
+                        nzType="caret-down"
+                        [nzInputReadOnly]="true"
+                    >
+                    </nz-date-picker>
+                    <div class="button-filter">
+                        <button type="button" class="btn btn-primary">
+                            <span>
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </button> 
+                        <button type="button" class="btn btn-warning">
+                            <span>
+                                <i class="bi bi-x-lg"></i>
+                            </span>
+                        </button>
+                    </div>
                 </div>
             </form>
-            
+
             <div class="tableBooking">
                 <nz-table
                     style="overflow-x: scroll"

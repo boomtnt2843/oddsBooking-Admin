@@ -91,8 +91,7 @@ export class AllBookingComponent implements OnInit {
         }
         this.bookings = bookingFilterByDate
         this.isLoading = false
-      }
-
     }
+}
 
 export class NgbdPaginationBasic {}

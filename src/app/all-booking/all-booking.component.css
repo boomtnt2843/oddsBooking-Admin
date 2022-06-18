@@ -157,9 +157,10 @@ margin-right: 0.75rem !important;
     color: #666666;
     border-radius: 5px;
     z-index: 0;
-    height: 34px;
+    height: 30px;
     transition: none;
     font-size: 20px;
+    margin-top: 4px;
 }
 
 .date-picker:hover {
@@ -185,3 +186,10 @@ margin-right: 0.75rem !important;
     padding: 4px 11px;
 }
 
+.button-filter {
+    height: 30px;
+    margin-top: 4px;
+}
+.button-filter button {
+    margin-right: 0.25rem;
+}
