@@ -10,7 +10,7 @@
                             placeholder="ห้อง"
                             value=""
                             formControlName="room"
-                            (selectionChange)="onSelectRoom()"
+
                         >
                             <mat-option value="">ห้อง</mat-option>
                             <mat-option value="All Stars">All Star</mat-option>
@@ -22,7 +22,7 @@
                             placeholder="สถานะ"
                             value=""
                             formControlName="status"
-                            (selectionChange)="onSelectStatus()"
+
                         >
                             <mat-option value="">สถานะ</mat-option>
                             <mat-option value="true">ยืนยันแล้ว</mat-option>
@@ -30,6 +30,7 @@
                         </mat-select>
                     </mat-form-field>
                     <nz-date-picker
+                        formControlName="startDate"
                         class="date-picker startdate-filter"
                         placeholder="วันที่เริ่มจอง"
                         nzFormat="dd/MMM/yyyy"
@@ -39,6 +40,8 @@
                     >
                     </nz-date-picker>
                     <nz-date-picker
+                    nzMode="date"
+                        formControlName="endDate"
                         class="date-picker enddate-filter"
                         nzPlaceHolder="วันสิ้นสุด"
                         nzFormat="dd/MMM/yyyy"
@@ -48,12 +51,12 @@
                     >
                     </nz-date-picker>
                     <div class="button-filter">
-                        <button type="button" class="btn btn-primary">
+                        <button (click)="onSubmitFilter()" type="button" class="btn btn-primary">
                             <span>
                                 <i class="bi bi-search"></i>
                             </span>
-                        </button> 
-                        <button type="button" class="btn btn-danger">
+                        </button>
+                        <button (click)="onReset()" type="button" class="btn btn-danger">
                             <span>
                                 <i class="bi bi-x-lg"></i>
                             </span>
