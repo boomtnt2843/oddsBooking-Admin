@@ -50,6 +50,21 @@
                         [nzInputReadOnly]="true"
                     >
                     </nz-date-picker>
+                    <nz-time-picker
+                        class="date-picker"
+                        nzFormat="HH:mm"
+                        nzPlaceHolder="เวลาเริ่ม"
+                        [nzMinuteStep]="30"
+                    >
+                    </nz-time-picker>
+                    <nz-time-picker
+                        class="date-picker"
+                        nzFormat="HH:mm"
+                        nzPlaceHolder="เวลาสิ้นสุด"
+                        [nzMinuteStep]="30"
+                    >
+                    </nz-time-picker>
+
                     <div class="button-filter">
                         <button (click)="onSubmitFilter()" type="button" class="btn btn-primary">
                             <span>
@@ -64,7 +79,6 @@
                     </div>
                 </div>
             </form>
-
             <div class="tableBooking">
                 <nz-table
                     style="overflow-x: scroll"

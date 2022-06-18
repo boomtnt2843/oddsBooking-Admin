@@ -46,9 +46,17 @@
     padding: 0 11px;
 }
 
+::ng-deep .ant-picker-now { 
+    display: none !important; 
+}
+
 ::ng-deep .ant-picker-focused {
     border-width: 2px !important;
     border-color: #3f51b5 !important;
+}
+
+.ant-picker-input>input:focus {
+    left: 30px !important;
 }
 
 ::ng-deep .ant-picker-suffix {
@@ -110,11 +118,6 @@
 ::ng-deep .mat-select-placeholder {
     color: #000000 !important;
 }
-
-::ng-deep .cdk-overlay-pane {
-    transform: translateX(-16px) translateY(-8px) !important;
-}
-
 
 /* custom */
 ::ng-deep .room-filter .mat-form-field-infix {

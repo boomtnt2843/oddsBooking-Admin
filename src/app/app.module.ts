@@ -20,6 +20,7 @@ import { registerLocaleData } from '@angular/common'
 import { LoginComponent } from './login/login.component'
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
+import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 
 @NgModule({
@@ -42,6 +43,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
         ReactiveFormsModule,
         NzInputModule,
         NzDatePickerModule,
+        NzTimePickerModule,
         NzIconModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
