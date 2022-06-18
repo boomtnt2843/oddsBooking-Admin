@@ -78,6 +78,19 @@ export class AllBookingComponent implements OnInit {
             })
         }
     }
+
+    onSubmitFilter(startDate: Date, endDate: Date) {
+        this.isLoading = true
+        const bookingFilterByDate: BookingDetail[] = []
+        for (let i = 0; i > this.bookings.length; i++) {
+            var booking = this.bookings[i]
+            if (booking.startDate >= startDate && booking.endDate <= endDate) {
+                bookingFilterByDate.push(booking)
+            }
+        }
+        this.bookings = bookingFilterByDate
+        this.isLoading = false
+    }
 }
 
 export class NgbdPaginationBasic {}
