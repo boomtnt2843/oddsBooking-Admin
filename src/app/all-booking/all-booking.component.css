@@ -76,7 +76,9 @@
 }
 
 ::ng-deep .ant-picker-clear {
-    margin-top: 4px;
+    font-size: 12px;
+    margin-top: 1px;
+    margin-right: -12px;
 }
 
 ::ng-deep nz-date-picker:hover {
@@ -89,6 +91,10 @@
 }
 
 ::ng-deep nz-date-picker ::placeholder {
+    color: #000000 !important;
+}
+
+::ng-deep .ant-select-selection-placeholder {
     color: #000000 !important;
 }
 
@@ -159,9 +165,8 @@
     color: #666666;
     border-radius: 5px;
     z-index: 0;
-    height: 30px;
+    height: 34px;
     transition: none;
-    font-size: 20px;
 }
 
 .date-picker:hover {
@@ -193,4 +198,47 @@
 
 .button-filter button {
     margin-right: 0.25rem;
+}
+
+.select-picker {
+    position: relative;
+    box-shadow: none;
+    border-radius: 5px;
+    z-index: 0;
+    transition: none;
+}
+
+::ng-deep .room-filter {
+    width: 6.5rem;
+}
+
+::ng-deep .status-filter {
+    width: 7.5rem;
+}
+
+::ng-deep .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    font-size: 1rem;
+    border-radius: 5px;
+    transition: none;
+    height: 34px;
+    padding: 1px 11px;
+}
+::ng-deep .ant-select:not(.ant-select-disabled):hover .ant-select-selector {
+    border-color: #000000;
+    border-width: 2px !important;
+    padding: 0px 10px;
+}
+::ng-deep .ant-select-focused:not(.ant-select-disabled).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    box-shadow: none !important;
+    border-color: #3f51b5;
+    border-width: 2px !important;
+    padding: 0px 10px;
+}
+
+::ng-deep .ant-select-arrow {
+    margin-top: -6px;
+    color: #666666;
+}
+::ng-deep .ant-select-clear {
+    margin-top: -9px;
 }

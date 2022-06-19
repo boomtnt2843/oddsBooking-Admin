@@ -22,6 +22,7 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzSelectModule } from 'ng-zorro-antd/select';
 
 @NgModule({
     declarations: [
@@ -45,6 +46,7 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
         NzDatePickerModule,
         NzTimePickerModule,
         NzIconModule,
+        NzSelectModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
     bootstrap: [AppComponent],

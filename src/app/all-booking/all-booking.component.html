@@ -5,53 +5,51 @@
             <hr />
             <form [formGroup]="filterForm">
                 <div class="row-filter">
-                    <mat-form-field class="room-filter" appearance="outline">
-                        <mat-select
-                            placeholder="ห้อง"
-                            value=""
-                            formControlName="room"
-
-                        >
-                            <mat-option value="">ห้อง</mat-option>
-                            <mat-option value="All Stars">All Star</mat-option>
-                            <mat-option value="Neon">Neon</mat-option>
-                        </mat-select>
-                    </mat-form-field>
-                    <mat-form-field class="status-filter" appearance="outline">
-                        <mat-select
-                            placeholder="สถานะ"
-                            value=""
-                            formControlName="status"
-
-                        >
-                            <mat-option value="">สถานะ</mat-option>
-                            <mat-option value="true">ยืนยันแล้ว</mat-option>
-                            <mat-option value="false">ยังไม่ยืนยัน</mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                    <nz-select
+                        class="select-picker room-filter"
+                        nzAllowClear
+                        nzPlaceHolder="ห้อง"
+                        formControlName="room"
+                    >
+                        <nz-option nzValue="" nzLabel="ห้อง"></nz-option>
+                        <nz-option nzValue="All Stars" nzLabel="All Stars"></nz-option>
+                        <nz-option nzValue="Neon" nzLabel="Neon"></nz-option>
+                    </nz-select>
+                    <nz-select
+                        class="select-picker status-filter"
+                        nzAllowClear
+                        nzPlaceHolder="สถานะ"
+                        formControlName="status"
+                    >
+                        <nz-option nzValue="" nzLabel="สถานะ"></nz-option>
+                        <nz-option nzValue="true" nzLabel="ยืนยันแล้ว"></nz-option>
+                        <nz-option nzValue="false" nzLabel="ยังไม่ยืนยัน"></nz-option>
+                    </nz-select>
                     <nz-date-picker
                         formControlName="startDate"
                         class="date-picker startdate-filter"
                         placeholder="วันที่เริ่มจอง"
                         nzFormat="dd/MMM/yyyy"
                         nz-icon
-                        nzType="caret-down"
+                        nzType="down"
                         [nzInputReadOnly]="true"
                     >
                     </nz-date-picker>
                     <nz-date-picker
-                    nzMode="date"
+                        nzMode="date"
                         formControlName="endDate"
                         class="date-picker enddate-filter"
                         nzPlaceHolder="วันสิ้นสุด"
                         nzFormat="dd/MMM/yyyy"
                         nz-icon
-                        nzType="caret-down"
+                        nzType="down"
                         [nzInputReadOnly]="true"
                     >
                     </nz-date-picker>
                     <nz-time-picker
                         class="date-picker"
+                        nz-icon
+                        nzType="down"
                         nzFormat="HH:mm"
                         nzPlaceHolder="เวลาเริ่ม"
                         [nzMinuteStep]="30"
@@ -59,6 +57,8 @@
                     </nz-time-picker>
                     <nz-time-picker
                         class="date-picker"
+                        nz-icon
+                        nzType="down"
                         nzFormat="HH:mm"
                         nzPlaceHolder="เวลาสิ้นสุด"
                         [nzMinuteStep]="30"
