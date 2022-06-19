@@ -242,3 +242,11 @@
 ::ng-deep .ant-select-clear {
     margin-top: -9px;
 }
+
+.starttime-filter {
+    width: 115px;
+}
+
+.endtime-filter {
+    width: 115px;
+}
