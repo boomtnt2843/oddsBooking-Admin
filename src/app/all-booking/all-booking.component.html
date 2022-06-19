@@ -46,9 +46,9 @@
                     >
                     </nz-time-picker>
                     <nz-date-picker
+                        class="date-picker enddate-filter"
                         nzMode="date"
                         formControlName="endDate"
-                        class="date-picker enddate-filter"
                         nzPlaceHolder="จนถึงวันที่"
                         nzFormat="dd/MMM/yyyy"
                         nz-icon
@@ -66,7 +66,6 @@
                         [nzMinuteStep]="30"
                     >
                     </nz-time-picker>
-
                     <div class="button-filter">
                         <button (click)="onSubmitFilter()" type="button" class="btn btn-primary">
                             <span>
@@ -95,9 +94,9 @@
                         <tr>
                             <!-- nzEllipsis -->
                             <th nzColumnKey="room">ห้อง</th>
-                            <th nzColumnKey="fullName">ชื่อ</th>
-                            <th nzColumnKey="startDate">เริ่มจอง</th>
-                            <th nzColumnKey="ToDate">จองถึง</th>
+                            <th nzColumnKey="fullName">ชื่อ - สกุล</th>
+                            <th nzColumnKey="startDate">ตั้งแต่</th>
+                            <th nzColumnKey="ToDate">จนถึง</th>
                             <th nzColumnKey="status">สถานะ</th>
                             <th nzColumnKey="other">เพิ่มเติม</th>
                         </tr>
