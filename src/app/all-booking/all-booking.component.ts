@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
 import { BookingDetail } from '../booking'
 import { BookingService } from '../booking.service'
@@ -72,6 +72,13 @@ export class AllBookingComponent implements OnInit {
         this.bookingService.getListBooking().subscribe((data) => {
             this.bookings = data
 
+            if (this.filterForm.get('room')?.value == '') {
+                this.filterForm.get('room')?.setValue(null)
+            }
+            if (this.filterForm.get('status')?.value == '') {
+                this.filterForm.get('status')?.setValue(null)
+            }
+
             let room = this.filterForm.get('room')?.value
             let status = this.filterForm.get('status')?.value
             let startDate = this.filterForm.get('startDate')?.value
@@ -88,37 +95,26 @@ export class AllBookingComponent implements OnInit {
 
             let bookingFilter: BookingDetail[] = []
             if (room != null) {
-                bookingFilter = []
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
-                    if (booking.room == room) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                bookingFilter = this.bookings.filter((booking) => {
+                    return booking.room == room
+                })
                 this.bookings = bookingFilter
             }
 
             if (status != null) {
-                bookingFilter = []
-                let checkStatus: Boolean
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
-
+                bookingFilter = this.bookings.filter((booking) => {
+                    let checkStatus: Boolean
                     if (status == true || status == 'true') {
                         checkStatus = true
                     } else {
                         checkStatus = false
                     }
-
-                    if (booking.status === checkStatus) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                    return booking.status == checkStatus
+                })
                 this.bookings = bookingFilter
             }
 
             if (startDate != null) {
-                bookingFilter = []
                 if (startTime == null) {
                     startTime = new Date('2022-01-01T23:59:00.000')
                 }
@@ -133,18 +129,14 @@ export class AllBookingComponent implements OnInit {
                     year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
                 )
 
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
+                bookingFilter = this.bookings.filter((booking) => {
                     let dataStartDate = new Date(booking.startDate)
-                    if (dataStartDate >= startDateTime) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                    return dataStartDate >= startDateTime
+                })
                 this.bookings = bookingFilter
             }
 
             if (startTime != null && startDate == null) {
-                bookingFilter = []
                 let hour = this.timeString(new Date(startTime).getHours())
                 let minute = this.timeString(new Date(startTime).getMinutes())
 
@@ -157,14 +149,11 @@ export class AllBookingComponent implements OnInit {
                     year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
                 )
 
-                console.log(startDateTime)
-
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
-
+                bookingFilter = this.bookings.filter((booking) => {
                     let dataStartDateHour = this.timeString(new Date(booking.startDate).getHours())
-                    let dataStartDateMinute = this.timeString(new Date(booking.startDate).getMinutes())
-
+                    let dataStartDateMinute = this.timeString(
+                        new Date(booking.startDate).getMinutes()
+                    )
                     let dataStartDateTime = new Date(
                         year +
                             '-' +
@@ -178,15 +167,12 @@ export class AllBookingComponent implements OnInit {
                             ':' +
                             '00.000'
                     )
-                    if (dataStartDateTime >= startDateTime) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                    return dataStartDateTime >= startDateTime
+                })
                 this.bookings = bookingFilter
             }
 
             if (endDate != null) {
-                bookingFilter = []
                 if (endTime == null) {
                     endTime = new Date('2022-01-01T23:59:00.000')
                 }
@@ -202,18 +188,14 @@ export class AllBookingComponent implements OnInit {
                     year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
                 )
 
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
+                bookingFilter = this.bookings.filter((booking) => {
                     let dataEndDate = new Date(booking.endDate)
-                    if (dataEndDate <= endDateTime) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                    return dataEndDate <= endDateTime
+                })
                 this.bookings = bookingFilter
             }
 
             if (endTime != null && endDate == null) {
-                bookingFilter = []
                 let hour = this.timeString(new Date(endTime).getHours())
                 let minute = this.timeString(new Date(endTime).getMinutes())
 
@@ -225,9 +207,8 @@ export class AllBookingComponent implements OnInit {
                 let endDateTime = new Date(
                     year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
                 )
-                for (let i = 0; i < this.bookings.length; i++) {
-                    var booking = this.bookings[i]
 
+                bookingFilter = this.bookings.filter((booking) => {
                     let dataEndDateHour = this.timeString(new Date(booking.endDate).getHours())
                     let dataEndDateMinute = this.timeString(new Date(booking.endDate).getMinutes())
 
@@ -245,12 +226,11 @@ export class AllBookingComponent implements OnInit {
                             '00.000'
                     )
 
-                    if (dataEndDateTime <= endDateTime) {
-                        bookingFilter.push(booking)
-                    }
-                }
+                    return dataEndDateTime <= endDateTime
+                })
                 this.bookings = bookingFilter
             }
+
             console.log('fiterDate running')
             console.log(this.bookings)
             this.isLoading = false
