@@ -23,6 +23,7 @@ import { NzDatePickerModule } from 'ng-zorro-antd/date-picker';
 import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSelectModule } from 'ng-zorro-antd/select';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
     declarations: [
@@ -32,6 +33,7 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
         NavbarComponent,
         AllBookingComponent,
         LoginComponent,
+        NavigationComponent,
     ],
     imports: [
         BrowserModule,

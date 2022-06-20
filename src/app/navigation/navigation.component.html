@@ -1,0 +1,55 @@
+<div class="myNavigation">
+    <nav class="navbar navbar-expand-lg fixed-top" id="sidebarContainer">
+        <a class="navbar-brand" onclick="hideSidebar()" routerLink="/home">
+            <img src="assets/images/odds_logo.png" class="navbar-logo" />
+        </a>
+        <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-bs-toggle="dropdown">
+                        <img class="navbar-profile" src="assets/images/avatar.png" />
+                        <span class="navbar-status-indicator"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right">
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <input type="checkbox" class="openSideMenu" id="openSideMenu" />
+        <label for="openSideMenu" class="navbar-toggler">
+            <i class="bi bi-list"></i>
+        </label>
+
+        <nav class="sidebar" data-bs-scroll="true">
+            <ul class="nav">
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" onclick="hideSidebar()" routerLink="/home">
+                        <i class="bi bi-house"></i>
+                        <span class="sidebar-menu">หน้าแรก</span>
+                    </a>
+                </li>
+                <li class="nav-item border-bottom">
+                    <a class="nav-link" onclick="hideSidebar()" routerLink="/allbooking">
+                        <i class="bi bi-card-list"></i>
+                        <span class="sidebar-menu">รายการจองทั้งหมด</span>
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav side-profile w-100">
+                <li class="nav-item d-flex">
+                    <div class="">
+                        <img class="sidebar-profile" src="assets/images/avatar.png" />
+                        <span class="sidebar-status-indicator"></span>
+                    </div>
+                    <div class="sidebar-profile-name">
+                        <p class="sidebar-name">Admin</p>
+                        <a routerLink="" class="sidebar-designation"> Sign Out </a>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </nav>
+</div>
