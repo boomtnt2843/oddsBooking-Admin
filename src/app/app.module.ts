@@ -21,6 +21,8 @@ import { NzTimePickerModule } from 'ng-zorro-antd/time-picker';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NavigationComponent } from './navigation/navigation.component';
+import { LoginComponent } from './login/login.component';
+import {MatInputModule} from '@angular/material/input';
 
 @NgModule({
     declarations: [
@@ -28,6 +30,7 @@ import { NavigationComponent } from './navigation/navigation.component';
         HomeComponent,
         AllBookingComponent,
         NavigationComponent,
+        LoginComponent,
     ],
     imports: [
         BrowserModule,
@@ -43,6 +46,7 @@ import { NavigationComponent } from './navigation/navigation.component';
         NzTimePickerModule,
         NzIconModule,
         NzSelectModule,
+        MatInputModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
     bootstrap: [AppComponent],
