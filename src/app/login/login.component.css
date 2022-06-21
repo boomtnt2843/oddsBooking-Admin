@@ -36,16 +36,6 @@
     margin-bottom: 1rem;
 }
 
-/* custom */
-a, 
-a:hover {
-    color: unset;
-}
-
-.button-container {
-    margin-top: 0.5rem;
-}
-
 /* Material */
 ::ng-deep .mat-input-element, 
 ::ng-deep input.mat-input-element {
@@ -71,4 +61,14 @@ a:hover {
 ::ng-deep .mat-form-field-appearance-outline .mat-form-field-wrapper {
     margin: 0 !important;
     padding-bottom: 10px;
+}
+
+/* custom */
+a, 
+a:hover {
+    color: unset;
+}
+
+.button-container {
+    margin-top: 0.5rem;
 }

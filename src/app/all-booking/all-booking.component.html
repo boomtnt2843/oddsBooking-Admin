@@ -1,271 +1,271 @@
 <div class="container">
-  <div class="card">
-      <div class="card-body">
-          <h3 class="card-title">รายการจองทั้งหมด</h3>
-          <hr />
-          <form [formGroup]="filterForm">
-              <div class="row-filter">
-                  <nz-select
-                  (ngModelChange)="onSubmitFilter()"
-                      class="select-picker room-filter"
-                      nzAllowClear
-                      nzPlaceHolder="ห้อง"
-                      formControlName="room"
-                  >
-                      <nz-option nzValue="" nzLabel="ห้อง"></nz-option>
-                      <nz-option nzValue="All Stars" nzLabel="All Stars"></nz-option>
-                      <nz-option nzValue="Neon" nzLabel="Neon"></nz-option>
-                  </nz-select>
-                  <nz-select
-                  (ngModelChange)="onSubmitFilter()"
-                      class="select-picker status-filter"
-                      nzAllowClear
-                      nzPlaceHolder="สถานะ"
-                      formControlName="status"
-                  >
-                      <nz-option nzValue="" nzLabel="สถานะ"></nz-option>
-                      <nz-option nzValue="true" nzLabel="ยืนยันแล้ว"></nz-option>
-                      <nz-option nzValue="false" nzLabel="ยังไม่ยืนยัน"></nz-option>
-                  </nz-select>
-                  <nz-date-picker
-                  (ngModelChange)="onSubmitFilter()"
-                      formControlName="startDate"
-                      class="date-picker startdate-filter"
-                      nzPlaceHolder="ตั้งแต่วันที่"
-                      nzFormat="dd/MMM/yyyy"
-                      nz-icon
-                      nzType="down"
-                      [nzInputReadOnly]="true"
-                  >
-                  </nz-date-picker>
-                  <nz-time-picker
-                  (ngModelChange)="onSubmitFilter()"
-                      formControlName="startTime"
-                      class="date-picker starttime-filter"
-                      nz-icon
-                      nzType="down"
-                      nzFormat="HH:mm"
-                      nzPlaceHolder="ตั้งแต่เวลา"
-                      [nzMinuteStep]="30"
-                  >
-                  </nz-time-picker>
-                  <nz-date-picker
-                  (ngModelChange)="onSubmitFilter()"
-                      class="date-picker enddate-filter"
-                      nzMode="date"
-                      formControlName="endDate"
-                      nzPlaceHolder="จนถึงวันที่"
-                      nzFormat="dd/MMM/yyyy"
-                      nz-icon
-                      nzType="down"
-                      [nzInputReadOnly]="true"
-                  >
-                  </nz-date-picker>
-                  <nz-time-picker
-                  (ngModelChange)="onSubmitFilter()"
-                      formControlName="endTime"
-                      class="date-picker endtime-filter"
-                      nz-icon
-                      nzType="down"
-                      nzFormat="HH:mm"
-                      nzPlaceHolder="จนถึงเวลา"
-                      [nzMinuteStep]="30"
-                  >
-                  </nz-time-picker>
-                  <div class="button-filter">
-                      <button (click)="onSubmitFilter()" type="button" class="btn btn-primary">
-                          <span>
-                              <i class="bi bi-search"></i>
-                          </span>
-                      </button>
-                      <button (click)="onReset()" type="button" class="btn btn-danger">
-                          <span>
-                              <i class="bi bi-x-lg"></i>
-                          </span>
-                      </button>
-                  </div>
-              </div>
-          </form>
-          <div class="tableBooking">
-              <nz-table
-                  style="overflow-x: scroll"
-                  nzSize="middle"
-                  #rowSelectionTable
-                  [nzData]="bookings"
-                  [nzLoading]="isLoading"
-                  [nzSimple]="true"
-                  [nzPageSize]="10"
-              >
-                  <thead>
-                      <tr>
-                          <!-- nzEllipsis -->
-                          <th nzColumnKey="room">ห้อง</th>
-                          <th nzColumnKey="fullName">ชื่อ - สกุล</th>
-                          <th nzColumnKey="startDate">ตั้งแต่</th>
-                          <th nzColumnKey="ToDate">จนถึง</th>
-                          <th nzColumnKey="status">สถานะ</th>
-                          <th nzColumnKey="other">เพิ่มเติม</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <tr *ngFor="let data of rowSelectionTable.data; let i = index">
-                          <td>{{ data.room }}</td>
-                          <td>{{ data.fullName }}</td>
-                          <td>{{ data.startDate | date: "dd MMM YYYY, HH:mm" }}</td>
-                          <td>{{ data.endDate | date: "dd MMM YYYY, HH:mm" }}</td>
-                          <td *ngIf="data.status" style="color: green">
-                              <span class="badge rounded-pill bg-success">ยืนยันแล้ว</span>
-                          </td>
-                          <td *ngIf="!data.status" style="color: red">
-                              <span class="badge rounded-pill bg-danger">ยังไม่ยืนยัน</span>
-                          </td>
-                          <td>
-                              <a
-                                  (click)="onModal(i)"
-                                  class="btn btn-primary"
-                                  data-bs-toggle="modal"
-                                  data-bs-target="#detailModal"
-                              >
-                                  <i class="bi bi-info-circle"></i>
-                              </a>
-                          </td>
-                          <div
-                              class="modal fade"
-                              id="detailModal"
-                              tabindex="-1"
-                              aria-hidden="true"
-                          >
-                              <div class="modal-dialog modal-dialog-centered">
-                                  <div class="modal-content">
-                                      <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">
-                                              รายละเอียดการจอง
-                                          </h5>
-                                          <a
-                                              type="button"
-                                              class="btn-close"
-                                              data-bs-dismiss="modal"
-                                              aria-label="Close"
-                                          ></a>
-                                      </div>
-                                      <div class="modal-body">
-                                          <div class="row">
-                                              <div class="col-sm-12 col-md-6 col-lg-6">
-                                                  <div>
-                                                      <label class="control-label">ชื่อ - สกุล :</label>
-                                                      <p>
-                                                          คุณ
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .fullName
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label">อีเมล :</label>
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .email
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label"
-                                                          >เบอร์โทรศัพท์ :</label
-                                                      >
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .phoneNumber
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label">สถานะ :</label>
-                                                      <p
-                                                          *ngIf="
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .status
-                                                          "
-                                                          style="color: green"
-                                                      >
-                                                          <span
-                                                              class="badge rounded-pill bg-success"
-                                                              >ยืนยันแล้ว</span
-                                                          >
-                                                      </p>
-                                                      <p
-                                                          *ngIf="
-                                                              !rowSelectionTable.data[iBooking]
-                                                                  .status
-                                                          "
-                                                          style="color: red"
-                                                      >
-                                                          <span
-                                                              class="badge rounded-pill bg-danger"
-                                                              >ยังไม่ยืนยัน</span
-                                                          >
-                                                      </p>
-                                                  </div>
-                                              </div>
-                                              <div class="col-sm-12 col-md-6 col-lg-6">
-                                                  <div>
-                                                      <label class="control-label"
-                                                          >ห้องที่จอง :</label
-                                                      >
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .room
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label"
-                                                          >เหตุผลการจอง :</label
-                                                      >
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .reason
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label"
-                                                          >จองตั้งแต่ :</label
-                                                      >
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .startDate
-                                                                  | date: "dd MMMM YYYY, HH:mm"
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                                  <div>
-                                                      <label class="control-label"
-                                                          >จองจนถึง :</label
-                                                      >
-                                                      <p>
-                                                          {{
-                                                              rowSelectionTable.data[iBooking]
-                                                                  .endDate
-                                                                  | date: "dd MMMM YYYY, HH:mm"
-                                                          }}
-                                                      </p>
-                                                  </div>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </tr>
-                  </tbody>
-              </nz-table>
-          </div>
-      </div>
-  </div>
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title">รายการจองทั้งหมด</h3>
+            <hr />
+            <form [formGroup]="filterForm">
+                <div class="row-filter">
+                    <nz-select
+                        (ngModelChange)="onSubmitFilter()"
+                        class="select-picker room-filter"
+                        nzAllowClear
+                        nzPlaceHolder="ห้อง"
+                        formControlName="room"
+                    >
+                        <nz-option nzValue="" nzLabel="ห้อง"></nz-option>
+                        <nz-option nzValue="All Stars" nzLabel="All Stars"></nz-option>
+                        <nz-option nzValue="Neon" nzLabel="Neon"></nz-option>
+                    </nz-select>
+                    <nz-select
+                        (ngModelChange)="onSubmitFilter()"
+                        class="select-picker status-filter"
+                        nzAllowClear
+                        nzPlaceHolder="สถานะ"
+                        formControlName="status"
+                    >
+                        <nz-option nzValue="" nzLabel="สถานะ"></nz-option>
+                        <nz-option nzValue="true" nzLabel="ยืนยันแล้ว"></nz-option>
+                        <nz-option nzValue="false" nzLabel="ยังไม่ยืนยัน"></nz-option>
+                    </nz-select>
+                    <nz-date-picker
+                        (ngModelChange)="onSubmitFilter()"
+                        formControlName="startDate"
+                        class="date-picker startdate-filter"
+                        nzPlaceHolder="ตั้งแต่วันที่"
+                        nzFormat="dd/MMM/yyyy"
+                        nz-icon
+                        nzType="down"
+                        [nzInputReadOnly]="true"
+                    >
+                    </nz-date-picker>
+                    <nz-time-picker
+                        (ngModelChange)="onSubmitFilter()"
+                        formControlName="startTime"
+                        class="date-picker starttime-filter"
+                        nz-icon
+                        nzType="down"
+                        nzFormat="HH:mm"
+                        nzPlaceHolder="ตั้งแต่เวลา"
+                        [nzMinuteStep]="30"
+                    >
+                    </nz-time-picker>
+                    <nz-date-picker
+                        (ngModelChange)="onSubmitFilter()"
+                        class="date-picker enddate-filter"
+                        nzMode="date"
+                        formControlName="endDate"
+                        nzPlaceHolder="จนถึงวันที่"
+                        nzFormat="dd/MMM/yyyy"
+                        nz-icon
+                        nzType="down"
+                        [nzInputReadOnly]="true"
+                    >
+                    </nz-date-picker>
+                    <nz-time-picker
+                        (ngModelChange)="onSubmitFilter()"
+                        formControlName="endTime"
+                        class="date-picker endtime-filter"
+                        nz-icon
+                        nzType="down"
+                        nzFormat="HH:mm"
+                        nzPlaceHolder="จนถึงเวลา"
+                        [nzMinuteStep]="30"
+                    >
+                    </nz-time-picker>
+                    <div class="button-filter">
+                        <button (click)="onSubmitFilter()" type="button" class="btn btn-primary">
+                            <span>
+                                <i class="bi bi-search"></i>
+                            </span>
+                        </button>
+                        <button (click)="onReset()" type="button" class="btn btn-danger">
+                            <span>
+                                <i class="bi bi-x-lg"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="tableBooking">
+                <nz-table
+                    style="overflow-x: scroll"
+                    nzSize="middle"
+                    #rowSelectionTable
+                    [nzData]="bookings"
+                    [nzLoading]="isLoading"
+                    [nzSimple]="true"
+                    [nzPageSize]="10"
+                >
+                    <thead>
+                        <tr>
+                            <th nzColumnKey="room">ห้อง</th>
+                            <th nzColumnKey="fullName">ชื่อ - สกุล</th>
+                            <th nzColumnKey="startDate">ตั้งแต่</th>
+                            <th nzColumnKey="ToDate">จนถึง</th>
+                            <th nzColumnKey="status">สถานะ</th>
+                            <th nzColumnKey="other">เพิ่มเติม</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let data of rowSelectionTable.data; let i = index">
+                            <td>{{ data.room }}</td>
+                            <td>{{ data.fullName }}</td>
+                            <td>{{ data.startDate | date: "dd MMM YYYY, HH:mm" }}</td>
+                            <td>{{ data.endDate | date: "dd MMM YYYY, HH:mm" }}</td>
+                            <td *ngIf="data.status" style="color: green">
+                                <span class="badge rounded-pill bg-success">ยืนยันแล้ว</span>
+                            </td>
+                            <td *ngIf="!data.status" style="color: red">
+                                <span class="badge rounded-pill bg-danger">ยังไม่ยืนยัน</span>
+                            </td>
+                            <td>
+                                <a
+                                    (click)="onModal(i)"
+                                    class="btn btn-primary"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#detailModal"
+                                >
+                                    <i class="bi bi-info-circle"></i>
+                                </a>
+                            </td>
+                            <div
+                                class="modal fade"
+                                id="detailModal"
+                                tabindex="-1"
+                                aria-hidden="true"
+                            >
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">
+                                                รายละเอียดการจอง
+                                            </h5>
+                                            <a
+                                                type="button"
+                                                class="btn-close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close"
+                                            ></a>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >ชื่อ - สกุล :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .fullName
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label">อีเมล :</label>
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .email
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >เบอร์โทรศัพท์ :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .phoneNumber
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label">สถานะ :</label>
+                                                        <p
+                                                            *ngIf="
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .status
+                                                            "
+                                                            style="color: green"
+                                                        >
+                                                            <span
+                                                                class="badge rounded-pill bg-success"
+                                                                >ยืนยันแล้ว</span
+                                                            >
+                                                        </p>
+                                                        <p
+                                                            *ngIf="
+                                                                !rowSelectionTable.data[iBooking]
+                                                                    .status
+                                                            "
+                                                            style="color: red"
+                                                        >
+                                                            <span
+                                                                class="badge rounded-pill bg-danger"
+                                                                >ยังไม่ยืนยัน</span
+                                                            >
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-12 col-md-6 col-lg-6">
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >ห้องที่จอง :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .room
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >เหตุผลการจอง :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .reason
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >จองตั้งแต่ :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .startDate
+                                                                    | date: "dd MMMM YYYY, HH:mm"
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="form-label"
+                                                            >จองจนถึง :</label
+                                                        >
+                                                        <p>
+                                                            {{
+                                                                rowSelectionTable.data[iBooking]
+                                                                    .endDate
+                                                                    | date: "dd MMMM YYYY, HH:mm"
+                                                            }}
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </tr>
+                    </tbody>
+                </nz-table>
+            </div>
+        </div>
+    </div>
 </div>

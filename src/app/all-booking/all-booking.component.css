@@ -17,6 +17,12 @@
     border: none;
 }
 
+.form-label {
+    font-weight: 900 !important;
+    text-align: left;
+    margin-bottom: 0;
+}
+
 /* ng zorro */
 ::ng-deep .ant-table {
     font-size: 1rem;
@@ -34,6 +40,10 @@
 
 ::ng-deep .ant-pagination {
     justify-content: center !important;
+}
+
+::ng-deep .ant-picker:hover {
+    cursor: pointer;
 }
 
 ::ng-deep .ant-picker-now, 
@@ -101,7 +111,6 @@
 }
 
 /* material custom */
-
 
 /* custom */
 .row-filter {

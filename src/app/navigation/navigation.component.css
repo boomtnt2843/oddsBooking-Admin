@@ -22,6 +22,10 @@
     line-height: normal;
 }
 
+.navbar-toggler:hover {
+    cursor: pointer;
+}
+
 .dropdown-menu {
     left: auto;
     right: 0;
@@ -36,17 +40,6 @@ a {
     width: 80%;
     height: auto;
     max-width: 150px;
-}
-
-#mainNav .navbar-nav .nav-item .nav-link {
-    color: #000000;
-    /*letter-spacing: 1px;*/
-    cursor: pointer;
-}
-#mainNav .navbar-nav .nav-item .nav-link.active,
-#mainNav .navbar-nav .nav-item .nav-link:hover {
-    /*color: #01a6fe;*/
-    text-shadow: #01a6fe 0em 0em 0.2em;
 }
 
 .navbar-profile {
