@@ -6,7 +6,6 @@
 }
 
 .navbar {
-    /* background-color: #88cee1; */
     background: linear-gradient(45deg, #f00b51 0%, #7366ff 100%);
     padding: 0.5rem 1.5rem;
 }
@@ -69,32 +68,14 @@ a {
     bottom: 0.5rem;
 }
 
-.dropdown .dropdown-toggle:after {
-    border-top: 0;
-    border-right: 0;
-    border-left: 0;
-    border-bottom: 0;
-    font: normal normal normal 24px/1 "typicons";
-    content: "\e01d";
-    width: auto;
-    height: auto;
-    vertical-align: middle;
-    line-height: 0.625rem;
-    font-size: 0.875rem;
-    margin-left: 5px;
+input[type="checkbox"]:checked~.sidebar {
+    transform: translateX(0);
 }
 
-.dropdown .dropdown-menu {
-    margin-top: 0rem;
-    font-size: 0.875rem;
-    box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
-    border-radius: 0;
-    padding: 0;
-}
-
-.dropdown .dropdown-menu .dropdown-item {
-    font-size: 0.875rem;
-    padding: 0.5rem 1.5rem;
+input[type=checkbox] {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    display: none;
 }
 
 .dropdown-menu {
@@ -116,27 +97,18 @@ a {
     border: 1px solid #e8eff9;
     border-radius: 0.25rem;
 }
-.dropdown-menu-right {
-    right: 0;
-    left: auto;
-}
-.dropup .dropdown-menu {
-    top: auto;
-    bottom: 100%;
-    margin-top: 0;
-    margin-bottom: 0.125rem;
+
+.dropdown .dropdown-menu {
+    margin-top: 0rem;
+    font-size: 0.875rem;
+    box-shadow: 0px 1px 15px 1px rgba(230, 234, 236, 0.35);
+    border-radius: 0;
+    padding: 0;
 }
 
-.dropdown-item {
-    display: block;
-    width: 100%;
-    padding: 0.25rem 1.5rem;
-    clear: both;
-    color: #001737;
-    text-align: inherit;
-    white-space: nowrap;
-    background-color: transparent;
-    border: 0;
+.dropdown .dropdown-menu .dropdown-item {
+    font-size: 0.875rem;
+    padding: 0.5rem 1.5rem;
 }
 
 .dropdown-item:hover,
@@ -146,21 +118,20 @@ a {
     background-color: #eaeaf1;
 }
 
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+.dropup .dropdown-menu {
+    top: auto;
+    bottom: 100%;
+    margin-top: 0;
+    margin-bottom: 0.125rem;
+}
+
 .dropdown-menu.show {
     display: block;
-}
-
-
-.sidebar li a:hover {
-    text-decoration: none;
-    color: #000000;
-    background: #eaeaf1;
-    transform: none;
-    transition: none;
-}
-
-.sidebar li div a:hover {
-    background-color: unset;
 }
 
 .sidebar {
@@ -192,16 +163,16 @@ a {
     }
 }
 
-.side-profile {
-    position: absolute;
-    padding: 1rem;
-    bottom: 0;
+.sidebar li a:hover {
+    text-decoration: none;
+    color: #000000;
+    background: #eaeaf1;
+    transform: none;
+    transition: none;
 }
 
-@media (min-width: 992px) {
-    .side-profile {
-        visibility: hidden;
-    }
+.sidebar li div a:hover {
+    background-color: unset;
 }
 
 .sidebar .nav {
@@ -216,32 +187,17 @@ a {
     color: #7e7e7e;
 }
 
-.sidebar .sidebar-designation {
-    font-size: 0.75rem;
-    margin-bottom: 0;
-    color: #001737;
-}
 .sidebar .sidebar-name {
     font-size: 16px;
     font-weight: 400;
+    cursor: default;
     margin-bottom: 0;
     color: #000000;
 }
-.sidebar-light .sidebar .sidebar-name {
-    font-size: 1rem;
-    font-weight: 400;
-    margin-bottom: 0;
-    color: #000;
-}
+
 .sidebar .sidebar-profile-image {
     position: relative;
     padding-top: 5px;
-}
-.sidebar .sidebar-header {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 0;
-    color: #000000;
 }
 
 .sidebar-profile {
@@ -253,18 +209,6 @@ a {
 
 .sidebar-profile-name {
     margin-left: 1rem;
-}
-
-.sidebar-status-indicator {
-    width: 14px;
-    height: 14px;
-    background: #17c964;
-    border: 2px solid #fff;
-    border-radius: 100%;
-    display: block;
-    position: absolute;
-    left: 3.125rem;
-    bottom: 1rem;
 }
 
 .sidebar .nav-item .nav-link {
@@ -295,14 +239,26 @@ a {
     margin-left: 0.625rem;
 }
 
-input[type="checkbox"]:checked~.sidebar {
-    transform: translateX(0);
+.sidebar-status-indicator {
+    width: 14px;
+    height: 14px;
+    background: #17c964;
+    border: 2px solid #fff;
+    border-radius: 100%;
+    display: block;
+    position: absolute;
+    left: 3.125rem;
+    bottom: 1rem;
 }
 
-input[type=checkbox] {
-    transition: all 0.3s;
-    box-sizing: border-box;
-    display: none;
+.side-profile {
+    position: absolute;
+    padding: 1rem;
+    bottom: 0;
 }
 
-
+@media (min-width: 992px) {
+    .side-profile {
+        visibility: hidden;
+    }
+}
