@@ -23,6 +23,8 @@ import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
 import {MatInputModule} from '@angular/material/input';
+import {MatIconModule} from '@angular/material/icon';
+
 
 @NgModule({
     declarations: [
@@ -47,6 +49,7 @@ import {MatInputModule} from '@angular/material/input';
         NzIconModule,
         NzSelectModule,
         MatInputModule,
+        MatIconModule,
     ],
     providers: [{ provide: NZ_I18N, useValue: th_TH }],
     bootstrap: [AppComponent],

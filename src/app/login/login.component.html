@@ -5,25 +5,35 @@
                 <img src="assets/images/odds_logo.png" />
                 <h4>Booking Management</h4>
             </div>
-            <div>
-                <form action="">
-                    <div class="row">
-                        <label class="form-label" for="username">Username :</label>
-                        <mat-form-field class="" appearance="outline">
-                            <i matPrefix class="bi bi-person-fill"></i>
-                            <input matInput type="text" placeholder="Username" />
-                        </mat-form-field>
-                        <label class="form-label" for="password">Password :</label>
-                        <mat-form-field class="" appearance="outline">
-                            <i matPrefix class="bi bi-key-fill"></i>
-                            <input matInput type="password" placeholder="Password" />
-                        </mat-form-field>
-                    </div>
-                    <div class="button-container">
-                        <button type="button" class="btn btn-success w-100">เข้าสู่ระบบ</button>
-                    </div>
-                </form>
-            </div>
+            <form [formGroup]="loginForm">
+                <div class="row">
+                    <label class="form-label">Username :</label>
+                    <mat-form-field class="" appearance="outline">
+                        <i matPrefix class="bi bi-person-fill"></i>
+                        <input matInput type="text" placeholder="Enter your username" />
+                    </mat-form-field>
+                    <label class="form-label">Password :</label>
+                    <mat-form-field class="" appearance="outline">
+                        <i matPrefix class="bi bi-key-fill"></i>
+                        <input
+                            matInput
+                            placeholder="Enter your password"
+                            [type]="hidePassword ? 'password' : 'text'"
+                            formControlName="password"
+                        />
+                        <a
+                            mat-icon-button
+                            matSuffix
+                            (click)="hidePassword = !hidePassword"
+                        >
+                            <i [ngClass]="hidePassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+                        </a>
+                    </mat-form-field>
+                </div>
+                <div class="button-container">
+                    <button type="button" class="btn btn-success w-100">Sign In</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
