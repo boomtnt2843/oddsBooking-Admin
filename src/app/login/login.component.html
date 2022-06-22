@@ -21,12 +21,10 @@
                             [type]="hidePassword ? 'password' : 'text'"
                             formControlName="password"
                         />
-                        <a
-                            mat-icon-button
-                            matSuffix
-                            (click)="hidePassword = !hidePassword"
-                        >
-                            <i [ngClass]="hidePassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"></i>
+                        <a mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
+                            <i
+                                [ngClass]="hidePassword ? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'"
+                            ></i>
                         </a>
                     </mat-form-field>
                 </div>

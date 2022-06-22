@@ -10,7 +10,7 @@ import { BookingDetail } from './booking'
 export class BookingService {
     constructor(private httpClient: HttpClient) {}
 
-    private url = "http://159.138.240.167:8082/v1/booking";
+    private url = 'http://159.138.240.167:8082/v1/booking'
     // private url = 'http://localhost:8080/v1/booking'
 
     httpOption = {
