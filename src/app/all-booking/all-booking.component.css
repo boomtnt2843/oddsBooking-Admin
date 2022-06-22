@@ -28,6 +28,10 @@
     font-size: 1rem;
 }
 
+::ng-deep nz-table {
+    overflow-x: scroll;
+}
+
 ::ng-deep .ant-table-thead > tr > th,
 ::ng-deep .ant-table-tbody > tr > td {
     text-align: center;

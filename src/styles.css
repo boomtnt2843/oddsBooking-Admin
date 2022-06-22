@@ -12,8 +12,17 @@ body {
     margin: 0;
     width: 100vw;
     height: 100vh;
-    background: url("/assets/images/odds-bg.png") center center / 400px repeat fixed,
-        linear-gradient(45deg, #f00b51 0%, #7366ff 100%) !important;
+    background: url("/assets/images/odds-bg.png") center center / 400px repeat fixed, linear-gradient(45deg, #f00b51 0%, #7366ff 100%) !important;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 0;
 }
 
 .main-panel {
