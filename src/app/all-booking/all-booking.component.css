@@ -87,9 +87,12 @@
 ::ng-deep nz-date-picker ::placeholder,
 ::ng-deep nz-time-picker ::placeholder,
 ::ng-deep .ant-select-selection-placeholder,
-::ng-deep ::-webkit-input-placeholder,
-::ng-deep ::-moz-placeholder,
 ::ng-deep .ant-select-single.ant-select-open .ant-select-selection-item {
+    color: #000000 !important;
+}
+
+::ng-deep ::-webkit-input-placeholder,
+::ng-deep ::-moz-placeholder {
     color: #000000 !important;
     opacity: 1;
 }
