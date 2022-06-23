@@ -16,6 +16,7 @@ export class AllBookingComponent implements OnInit {
     filterForm: FormGroup = new FormGroup({})
 
     constructor(private fb: FormBuilder, private bookingService: BookingService) {
+        this.fixedTime()
         this.filterForm = fb.group({
             room: new FormControl(),
             status: new FormControl(),
@@ -26,9 +27,25 @@ export class AllBookingComponent implements OnInit {
         })
     }
 
+    time = ['09:00', '09:30']
+    hour = 9
+    fixedTime() {
+        let minute = ''
+        for (let i = 1; i < 26; i++) {
+            if (i % 2 == 1) {
+                this.hour += 1
+                minute = '00'
+            } else {
+                minute = '30'
+            }
+            let time = this.hour + ':' + minute
+            this.time.push(time)
+        }
+    }
+
     ngOnInit(): void {
         this.isLoading = true
-        this.bookingService.getListBooking().subscribe((data) => {
+        this.bookingService.getBookingsByFilter('', '', '', '').subscribe((data) => {
             this.isLoading = false
             this.bookings = data
         })
@@ -47,15 +64,15 @@ export class AllBookingComponent implements OnInit {
 
     onReset() {
         this.isLoading = true
-        this.bookingService.getListBooking().subscribe((data) => {
+        this.filterForm.get('room')?.setValue('')
+        this.filterForm.get('status')?.setValue('')
+        this.filterForm.get('startTime')?.setValue(null)
+        this.filterForm.get('endTime')?.setValue(null)
+        this.filterForm.get('startDate')?.setValue(null)
+        this.filterForm.get('endDate')?.setValue(null)
+        this.bookingService.getBookingsByFilter('', '', '', '').subscribe((data) => {
             this.isLoading = false
             this.bookings = data
-            this.filterForm.get('room')?.setValue(null)
-            this.filterForm.get('status')?.setValue(null)
-            this.filterForm.get('startDate')?.setValue(null)
-            this.filterForm.get('endDate')?.setValue(null)
-            this.filterForm.get('startTime')?.setValue(null)
-            this.filterForm.get('endTime')?.setValue(null)
         })
     }
 
@@ -75,107 +92,68 @@ export class AllBookingComponent implements OnInit {
         let endDate = this.filterForm.get('endDate')?.value
         let endTime = this.filterForm.get('endTime')?.value
 
-        if(room == ''){
-          room = null
+        if (room == null) {
+            room = ''
         }
-        if(status == ''){
-          status = null
+        if (status == null) {
+            status = ''
         }
 
         if (startDate != null) {
             if (startTime == null) {
-                startTime = new Date('1000-01-01T00:00:00.000')
+                startTime = '09:00'
             }
             let date = this.timeString(new Date(startDate).getDate())
             let month = this.timeString(new Date(startDate).getMonth() + 1)
             let year = new Date(startDate).getFullYear().toString()
 
-            let hour = this.timeString(new Date(startTime).getHours())
-            let minute = this.timeString(new Date(startTime).getMinutes())
-
-            let startDateTime =
-                year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
+            let startDateTime = year + '-' + month + '-' + date + 'T' + startTime + ':' + '00.000'
 
             startDate = startDateTime
         } else if (startTime != null && startDate == null) {
-            let hour = this.timeString(new Date(startTime).getHours())
-            let minute = this.timeString(new Date(startTime).getMinutes())
-
             let Now = Date.now()
             let date = this.timeString(new Date(Now).getDate())
             let month = this.timeString(new Date(Now).getMonth() + 1)
             let year = new Date(Now).getFullYear().toString()
 
-            startDate = year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
+            startDate = year + '-' + month + '-' + date + 'T' + startTime + ':' + '00.000'
             this.filterForm.get('startDate')?.setValue(startDate)
         } else {
-            startDate = '1000-01-01T00:00:00.000'
+            startDate = ''
         }
 
         if (endDate != null) {
             if (endTime == null) {
-                endTime = new Date('3000-01-01T23:59:00.000')
+                endTime = '23:59'
             }
 
             let date = this.timeString(new Date(endDate).getDate())
             let month = this.timeString(new Date(endDate).getMonth() + 1)
             let year = new Date(endDate).getFullYear().toString()
-
-            let hour = this.timeString(new Date(endTime).getHours())
-            let minute = this.timeString(new Date(endTime).getMinutes())
-
             let endDateTime =
-                year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
+                year + '-' + month + '-' + date + 'T' + endTime + ':' + '00.000'
 
             endDate = endDateTime
         } else if (endTime != null && endDate == null) {
-            let hour = this.timeString(new Date(endTime).getHours())
-            let minute = this.timeString(new Date(endTime).getMinutes())
 
             let Now = Date.now()
             let date = this.timeString(new Date(Now).getDate() + 1)
             let month = this.timeString(new Date(Now).getMonth() + 1)
             let year = new Date(Now).getFullYear().toString()
 
-            endDate = year + '-' + month + '-' + date + 'T' + hour + ':' + minute + ':' + '00.000'
+            endDate = year + '-' + month + '-' + date + 'T' + endTime + ':' + '00.000'
             this.filterForm.get('endDate')?.setValue(endDate)
         } else {
-            endDate = '3000-01-01T23:59:00.000'
+            endDate = ''
         }
 
         this.isLoading = true
-        if (
-            room == null &&
-            status == null &&
-            (startDate != '1000-01-01T00:00:00.000' || endDate != '3000-01-01T23:59:00.000')
-        ) {
-            this.bookingService.getBookingByDate(startDate, endDate).subscribe((data) => {
-                this.isLoading = false
-                this.bookings = data
-            })
-        } else if (status != null && room == null) {
-            this.bookingService.getBookingByStatus(status, startDate, endDate).subscribe((data) => {
+        this.bookingService
+            .getBookingsByFilter(room, status, startDate, endDate)
+            .subscribe((data) => {
                 this.bookings = data
                 this.isLoading = false
             })
-        } else if (room != null && status == null) {
-            this.bookingService.getBookingByRoom(room, startDate, endDate).subscribe((data) => {
-                this.bookings = data
-                this.isLoading = false
-            })
-        } else if (room != null && status != null) {
-            this.bookingService
-                .getBookingsByFilter(room, status, startDate, endDate)
-                .subscribe((data) => {
-                    this.bookings = data
-                    this.isLoading = false
-                })
-        } else {
-            this.bookingService.getListBooking().subscribe((data) => {
-                this.isLoading = false
-                this.bookings = data
-            })
-        }
     }
 }
 
