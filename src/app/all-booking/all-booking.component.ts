@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms'
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { BookingDetail } from '../booking'
 import { BookingService } from '../booking.service'
 
@@ -22,8 +22,8 @@ export class AllBookingComponent implements OnInit {
             room: new FormControl(),
             status: new FormControl(),
             startDate: new FormControl(),
-            endDate: new FormControl(),
             startTime: new FormControl(),
+            endDate: new FormControl(),
             endTime: new FormControl(),
         })
     }
