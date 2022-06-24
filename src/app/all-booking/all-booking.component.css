@@ -18,9 +18,14 @@
 }
 
 .form-label {
-    font-weight: 900 !important;
+    font-weight: 400 !important;
     text-align: left;
     margin-bottom: 0;
+}
+
+.badge {
+    display: unset;
+    padding-bottom: 3px;
 }
 
 /* ng zorro */

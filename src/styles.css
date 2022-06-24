@@ -1,9 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap"); */
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 @import "~ng-zorro-antd/ng-zorro-antd.min.css";
 
 * {
     font-family: "Kanit", sans-serif !important;
+    font-weight: 300 !important;
 }
 
 html,
