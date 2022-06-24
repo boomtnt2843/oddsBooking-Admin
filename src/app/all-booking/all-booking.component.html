@@ -12,7 +12,7 @@
                         nzPlaceHolder="ห้อง"
                         formControlName="room"
                     >
-                        <nz-option nzValue="" nzLabel="ห้อง"></nz-option>
+                        <nz-option nzValue="" nzLabel="ทั้งหมด"></nz-option>
                         <nz-option nzValue="All Stars" nzLabel="All Stars"></nz-option>
                         <nz-option nzValue="Neon" nzLabel="Neon"></nz-option>
                     </nz-select>
@@ -23,7 +23,7 @@
                         nzPlaceHolder="สถานะ"
                         formControlName="status"
                     >
-                        <nz-option nzValue="" nzLabel="สถานะ"></nz-option>
+                        <nz-option nzValue="" nzLabel="ทั้งหมด"></nz-option>
                         <nz-option nzValue="true" nzLabel="ยืนยันแล้ว"></nz-option>
                         <nz-option nzValue="false" nzLabel="ยังไม่ยืนยัน"></nz-option>
                     </nz-select>
@@ -48,7 +48,7 @@
                         formControlName="startTime"
                     >
                         <nz-option
-                            *ngFor="let time of time"
+                            *ngFor="let time of startTime"
                             nzValue="{{ time }}"
                             nzLabel="{{ time }} น."
                         ></nz-option>
@@ -87,7 +87,7 @@
                         formControlName="endTime"
                     >
                         <nz-option
-                            *ngFor="let time of time"
+                            *ngFor="let time of endTime"
                             nzValue="{{ time }}"
                             nzLabel="{{ time }} น."
                         ></nz-option>

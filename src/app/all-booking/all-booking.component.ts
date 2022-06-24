@@ -16,7 +16,8 @@ export class AllBookingComponent implements OnInit {
     filterForm: FormGroup = new FormGroup({})
 
     constructor(private fb: FormBuilder, private bookingService: BookingService) {
-        this.fixedTime()
+        this.fixedStartTime()
+        this.fixedEndTime()
         this.filterForm = fb.group({
             room: new FormControl(),
             status: new FormControl(),
@@ -27,19 +28,36 @@ export class AllBookingComponent implements OnInit {
         })
     }
 
-    time = ['09:00', '09:30']
-    hour = 9
-    fixedTime() {
+    startTime = ['09:00', '09:30']
+    endTime = ['09:00', '09:30']
+
+    fixedStartTime() {
+        let hour = 9
         let minute = ''
         for (let i = 1; i < 26; i++) {
             if (i % 2 == 1) {
-                this.hour += 1
+                hour += 1
                 minute = '00'
             } else {
                 minute = '30'
             }
-            let time = this.hour + ':' + minute
-            this.time.push(time)
+            let time = hour + ':' + minute
+            this.startTime.push(time)
+        }
+    }
+
+    fixedEndTime() {
+        let hour = 9
+        let minute = ''
+        for (let i = 1; i < 28; i++) {
+            if (i % 2 == 1) {
+                hour += 1
+                minute = '00'
+            } else {
+                minute = '30'
+            }
+            let time = hour + ':' + minute
+            this.endTime.push(time)
         }
     }
 
@@ -62,18 +80,22 @@ export class AllBookingComponent implements OnInit {
         this.iBooking = i
     }
 
+    clear?: Boolean = true
     onReset() {
         this.isLoading = true
-        this.filterForm.get('room')?.setValue('')
-        this.filterForm.get('status')?.setValue('')
-        this.filterForm.get('startTime')?.setValue(null)
-        this.filterForm.get('endTime')?.setValue(null)
+        this.clear = false
+        this.filterForm.get('room')?.setValue(null)
+        this.filterForm.get('status')?.setValue(null)
         this.filterForm.get('startDate')?.setValue(null)
         this.filterForm.get('endDate')?.setValue(null)
+        this.filterForm.get('startTime')?.setValue(null)
+        this.filterForm.get('endTime')?.setValue(null)
         this.bookingService.getBookingsByFilter('', '', '', '').subscribe((data) => {
             this.isLoading = false
             this.bookings = data
+            this.clear = true
         })
+
     }
 
     timeString(time: number): String {
@@ -110,7 +132,7 @@ export class AllBookingComponent implements OnInit {
             let startDateTime = year + '-' + month + '-' + date + 'T' + startTime + ':' + '00.000'
 
             startDate = startDateTime
-        } else if (startTime != null && startDate == null) {
+        } else if (startTime != null && startDate == null && this.clear == true) {
             let Now = Date.now()
             let date = this.timeString(new Date(Now).getDate())
             let month = this.timeString(new Date(Now).getMonth() + 1)
@@ -130,12 +152,10 @@ export class AllBookingComponent implements OnInit {
             let date = this.timeString(new Date(endDate).getDate())
             let month = this.timeString(new Date(endDate).getMonth() + 1)
             let year = new Date(endDate).getFullYear().toString()
-            let endDateTime =
-                year + '-' + month + '-' + date + 'T' + endTime + ':' + '00.000'
+            let endDateTime = year + '-' + month + '-' + date + 'T' + endTime + ':' + '00.000'
 
             endDate = endDateTime
-        } else if (endTime != null && endDate == null) {
-
+        } else if (endTime != null && endDate == null && this.clear == true) {
             let Now = Date.now()
             let date = this.timeString(new Date(Now).getDate() + 1)
             let month = this.timeString(new Date(Now).getMonth() + 1)
