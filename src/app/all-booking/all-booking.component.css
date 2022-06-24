@@ -18,7 +18,7 @@
 }
 
 .form-label {
-    font-weight: 400 !important;
+    font-weight: bold !important;
     text-align: left;
     margin-bottom: 0;
 }
@@ -76,6 +76,10 @@
     color: #666666;
 }
 
+::ng-deep .ant-select-dropdown {
+    padding: 0;
+}
+
 ::ng-deep .ant-select-clear {
     margin-top: -9px;
 }
@@ -87,6 +91,11 @@
 ::ng-deep .ant-picker-input > input {
     cursor: pointer !important;
     font-size: 1rem;
+}
+
+::ng-deep .ant-select-selection-placeholder,
+::ng-deep .ant-select-single.ant-select-open .ant-select-selection-item {
+    font-weight: 200 !important;
 }
 
 ::ng-deep nz-date-picker ::placeholder,
