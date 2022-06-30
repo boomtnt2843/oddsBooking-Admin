@@ -19,20 +19,14 @@ export class BookingService {
 
     getBookingsByFilter(
         room: String,
-        status: String,
-        startDate: String,
-        endDate: String
+        status: String
     ): Observable<BookingDetail[]> {
         return this.httpClient.get<BookingDetail[]>(
             this.url +
                 '/admin/filter/?room=' +
                 room +
                 '&status=' +
-                status +
-                '&startDate=' +
-                startDate +
-                '&endDate=' +
-                endDate,
+                status,
             this.httpOption
         )
     }
